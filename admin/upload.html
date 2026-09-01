@@ -32,6 +32,7 @@
     color:var(--text); border-radius:6px; font-size:14px; outline:none;
   }
   input:focus, select:focus{border-color:var(--accent)}
+  input[readonly]{opacity:.6; cursor:not-allowed}
   .row{display:flex; gap:10px}
   .row > *{flex:1}
   .hint{font-size:12px; color:var(--muted); margin-top:5px}
@@ -111,8 +112,8 @@
     <button type="button" id="loadFoldersBtn" style="margin-bottom:14px; background:#2a2e38">載入資料夾 Load folders</button>
     <div class="field">
       <label for="newFolder">或輸入新資料夾名稱 / Or type a new folder name</label>
-      <input type="text" id="newFolder" placeholder="例如：新工程名稱 2026">
-      <div class="hint">If filled in, this takes priority over the dropdown above.</div>
+      <input type="text" id="newFolder" placeholder="例如：新工程名稱2026">
+      <div class="hint" id="newFolderHint">If a category is selected below, this is auto-filled from the project name and locked. Otherwise it takes priority over the dropdown above.</div>
     </div>
   </div>
 
@@ -140,7 +141,7 @@
         <input type="text" id="nameEn" placeholder="e.g. Sheung Wan Commercial Building">
       </div>
     </div>
-    <div class="hint">Tip: for a brand-new project, type the same name here as the folder name above so the photo path matches.</div>
+    <div class="hint">The folder name is automatically kept identical to this field — no manual typing needed, and spaces are stripped automatically so the folder, manifest key, and card label can never drift apart.</div>
   </div>
 
   <div class="card">
@@ -192,20 +193,55 @@ function repoInfo(){
   return { owner, repo, branch };
 }
 
-// Sanitize a path segment: strip slashes, .., control chars. Keep unicode (incl. Chinese) letters.
+// Sanitize a path segment: strip slashes, .., control chars, and ALL whitespace.
+// Spaces are deliberately stripped everywhere a name touches a folder path,
+// manifest key, or URL — a stray space is exactly what caused folder/label
+// mismatches in the past (e.g. "元朗 九寶海鮮酒家" vs "九寶海鮮酒家").
+// If you ever need to allow spaces again, remove ONLY the line marked below —
+// nothing else in this file needs to change.
 function sanitizeSegment(s){
   return s
     .replace(/\.\./g, '')
     .replace(/[\/\\]/g, '')
     .replace(/[\x00-\x1f\x7f]/g, '')
+    .replace(/\s+/g, '')   // <-- remove this line to allow spaces in names again (not recommended)
     .trim();
 }
 
 function currentFolder(){
+  const catKey = $('category').value;
+  if (catKey) {
+    // New project card being created: the folder name is ALWAYS derived
+    // from the Chinese project name field. No manual override here is
+    // possible, so the folder, the manifest key, and the card label can
+    // never diverge again.
+    return sanitizeSegment($('nameZh').value);
+  }
   const typed = sanitizeSegment(newFolder.value);
   if (typed) return typed;
   return folderSelect.value || '';
 }
+
+// Keep the "new folder name" field in sync with the project name whenever
+// a category is selected (i.e. we're creating a brand-new project card).
+// While a category is selected, the field is locked/read-only so nobody
+// can type a different value by accident.
+function syncFolderFromName(){
+  const catKey = $('category').value;
+  const hintEl = $('newFolderHint');
+  if (catKey) {
+    newFolder.value = sanitizeSegment($('nameZh').value);
+    newFolder.readOnly = true;
+    newFolder.placeholder = '(自動帶入工程名稱 / auto-filled from project name)';
+    if (hintEl) hintEl.textContent = 'Auto-filled from the project name (Chinese) below and locked — this guarantees the folder, manifest, and card label always match.';
+  } else {
+    newFolder.readOnly = false;
+    newFolder.placeholder = '例如：新工程名稱2026';
+    if (hintEl) hintEl.textContent = 'If filled in, this takes priority over the dropdown above.';
+  }
+}
+$('nameZh').addEventListener('input', syncFolderFromName);
+$('category').addEventListener('change', syncFolderFromName);
 
 // ---- Load existing folders under images/ ----
 loadFoldersBtn.addEventListener('click', async () => {
@@ -450,7 +486,7 @@ async function updateHtmlPage(info, path, snippet){
   }
 }
 
-// ---- NEW: keep images-manifest.json in sync with each upload ----
+// ---- Keep images-manifest.json in sync with each upload ----
 async function updateManifest(info, folder, uploadedFilenames){
   const path = 'images-manifest.json';
   const url = `https://api.github.com/repos/${info.owner}/${info.repo}/contents/${path}?ref=${encodeURIComponent(info.branch)}`;
@@ -516,7 +552,7 @@ uploadBtn.addEventListener('click', async () => {
 
   const anySucceeded = selectedFiles.some(f => f.status === 'done');
 
-  // NEW: keep images-manifest.json in sync so allphoto.html doesn't have to guess file paths
+  // Keep images-manifest.json in sync so allphoto.html doesn't have to guess file paths
   if (anySucceeded) {
     try {
       const uploadedNames = selectedFiles
