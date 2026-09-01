@@ -78,7 +78,12 @@
   <p class="sub">Uploads images directly into this repo via the GitHub API. Nothing is stored anywhere except in this browser tab.</p>
 
   <div class="card">
-    <h2>GitHub 連線設定</h2>
+    <h2>GitHub 連線設定 &nbsp;<span class="badge warn">Required</span></h2>
+    <div class="field">
+      <label for="token">Personal Access Token（不會被儲存，每次使用需重新輸入）</label>
+      <input type="password" id="token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+      <div class="hint">Classic token: github.com/settings/tokens → Generate new token (classic) → tick "repo" → Generate.</div>
+    </div>
     <div class="row">
       <div class="field">
         <label for="owner">GitHub 用戶名 / Owner</label>
@@ -158,13 +163,8 @@
 </div>
 
 <script>
-// NOTE: this token is embedded client-side at the user's explicit request.
-// Anyone who can view this page's source can read it and gain write access
-// to the repo below. Rotate/revoke it at github.com/settings/tokens any time.
-const GITHUB_TOKEN = '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';
-
 const $ = id => document.getElementById(id);
-const ownerEl = $('owner'), repoEl = $('repo'), branchEl = $('branch');
+const tokenEl = $('token'), ownerEl = $('owner'), repoEl = $('repo'), branchEl = $('branch');
 const folderSelect = $('folderSelect'), newFolder = $('newFolder');
 const fileInput = $('fileInput'), dropZone = $('dropZone'), fileList = $('fileList');
 const uploadBtn = $('uploadBtn'), logEl = $('log'), loadFoldersBtn = $('loadFoldersBtn');
@@ -178,7 +178,10 @@ function log(msg){
 }
 
 function apiHeaders(){
-  return { 'Accept': 'application/vnd.github+json', 'Authorization': 'Bearer ' + GITHUB_TOKEN };
+  const token = tokenEl.value.trim();
+  const h = { 'Accept': 'application/vnd.github+json' };
+  if (token) h['Authorization'] = 'Bearer ' + token;
+  return h;
 }
 
 function repoInfo(){
@@ -450,6 +453,7 @@ async function updateHtmlPage(info, path, snippet){
 uploadBtn.addEventListener('click', async () => {
   const info = repoInfo();
   if (!info) return;
+  if (!tokenEl.value.trim()) { alert('Please enter a GitHub token with write access.'); return; }
   const folder = currentFolder();
   if (!folder) { alert('Please choose an existing folder or type a new folder name.'); return; }
   if (selectedFiles.length === 0) { alert('Please select at least one image.'); return; }
