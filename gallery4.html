@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="dark">
+<head>
+    <meta charset="utf-8">
+    <title data-lang data-lang-zh="高歌工程" data-lang-en="KOCO ENGINEERING COMPANY LIMITED">高歌工程</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" data-lang data-lang-zh="高歌工程 - 專業室內設計及工程服務" data-lang-en="KOCO ENGINEERING COMPANY LIMITED - Professional Interior Design and Engineering Services" content="高歌工程 - 專業室內設計及工程服務">
+    <meta property="og:title" data-lang data-lang-zh="高歌工程" data-lang-en="KOCO ENGINEERING COMPANY LIMITED" content="高歌工程">
+    <meta property="og:description" data-lang data-lang-zh="專業室內設計及工程服務，作品集展示" data-lang-en="Professional Interior Design and Engineering Services, Portfolio Showcase" content="專業室內設計及工程服務，作品集展示">
+    <link href="./css/vendors/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+    <script>
+        if (localStorage.getItem('dark-mode') === 'false') {
+            document.querySelector('html').classList.remove('dark');
+        }
+        
+        // 添加語言設置
+        let currentLang = localStorage.getItem('lang') || 'zh';
+    </script>
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --secondary-color: #818cf8;
+            --text-color: #4f46e5;
+            --text-color-dark: #4f46e5;
+            --bg-color: #ffffff;
+            --bg-color-dark: #ffffff;
+        }
+
+        body {
+            background-color: #ffffff !important;
+            color: #4f46e5;
+        }
+
+        .dark {
+            background-color: #ffffff !important;
+            color: #4f46e5 !important;
+        }
+
+        .dark .text-gray-100,
+        .dark .text-gray-200,
+        .dark .text-gray-300,
+        .dark .text-gray-400,
+        .dark .text-gray-500,
+        .dark .text-gray-600,
+        .dark .text-gray-700,
+        .dark .text-gray-800,
+        .dark .text-gray-900 {
+            color: #4f46e5 !important;
+        }
+
+        .dark .bg-gray-800,
+        .dark .bg-gray-900 {
+            background-color: #ffffff !important;
+        }
+
+        header {
+            background-color: #ffffff !important;
+        }
+
+        footer {
+            background-color: #ffffff !important;
+        }
+
+        .bg-gray-50,
+        .bg-gray-100,
+        .bg-gray-200,
+        .bg-gray-300,
+        .bg-gray-400,
+        .bg-gray-500,
+        .bg-gray-600,
+        .bg-gray-700,
+        .bg-gray-800,
+        .bg-gray-900 {
+            background-color: #ffffff !important;
+        }
+
+        .gallery-container {
+            background: #ffffff !important;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .gallery-swiper, .swiper-slide {
+            height: auto !important;
+            min-height: unset !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 10px;
+        }
+
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 16px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .thumbnail-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/2;
+            border: 2px solid rgba(229, 231, 235, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .thumbnail-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            background-color: rgba(255, 255, 255, 0.9);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: var(--primary-color);
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 20px;
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .swiper-slide:hover .image-caption {
+            transform: translateY(0);
+        }
+
+        .view-fullscreen-btn {
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .view-fullscreen-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* 全屏查看样式 */
+        .fullscreen-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .fullscreen-container {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            height: 80%;
+            max-height: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* 全屏模式下的图片包装器样式 */
+        .fullscreen-modal .img-watermark-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .fullscreen-modal .img-watermark-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* 主页面图片包装器样式 */
+        .gallery-container .img-watermark-wrapper {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .gallery-container .img-watermark-wrapper img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .fullscreen-caption {
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin-top: 10px;
+            max-width: 800px;
+        }
+
+        .fullscreen-nav {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            z-index: 2001;
+            pointer-events: none;
+        }
+
+        .fullscreen-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+        }
+
+        .fullscreen-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        .fullscreen-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 3000 !important;
+        }
+
+        .fullscreen-close:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(90deg);
+        }
+
+        @media (max-width: 768px) {
+            .swiper-slide img {
+                height: 50vh;
+            }
+            
+            .thumbnail-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+            
+            .swiper-button-next,
+            .swiper-button-prev {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .swiper-button-next:after,
+            .swiper-button-prev:after {
+                font-size: 16px;
+            }
+
+            .fullscreen-container {
+                width: 95%;
+                height: 85%;
+            }
+
+            .fullscreen-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .fullscreen-close {
+                width: 30px;
+                height: 30px;
+                font-size: 20px;
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        .img-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255,255,255,0.92);
+            font-size: 2.2rem;
+            font-weight: bold;
+            pointer-events: none;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.35), 0 0 2px #fff;
+            z-index: 2;
+            user-select: none;
+            white-space: pre-line;
+            letter-spacing: 0.08em;
+            opacity: 0.85;
+            font-family: 'Noto Sans TC', 'Montserrat', Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class="font-inter antialiased bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 tracking-tight">
+    <div class="flex flex-col min-h-screen overflow-hidden">
+        <!-- 头部导航 -->
+        <header class="w-full z-30 bg-white dark:bg-gray-900">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="flex items-center justify-between h-20">
+                    <!-- Logo -->
+                    <div class="shrink-0 mr-5">
+                        <a href="index.html" class="flex items-center">
+                            <img src="images/icon.png" alt="Logo" class="w-8 h-8" />
+                            <span class="ml-2 text-xl font-bold" data-lang data-lang-zh="高歌工程" data-lang-en="KOCO ENGINEERING COMPANY LIMITED">高歌工程</span>
+                        </a>
+                    </div>
+                    
+                    <!-- 返回按钮 -->
+                    <a href="index.html" class="btn-sm text-white bg-indigo-500 hover:bg-indigo-400 ml-3">
+                        <span class="back-text">返回主頁</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- 语言切换按钮 -->
+        <button class="language-switch" onclick="toggleLanguage()">
+            <span class="language-icon">🌐</span>
+            <span class="lang-text">English</span>
+        </button>
+
+        <main class="grow">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-32 pb-12 md:pt-40 md:pb-20">
+                <h1 class="h1 text-center mb-4 project-title">啟德SEALY</h1>
+                <p class="text-xl text-gray-600 dark:text-gray-400 text-center mb-8 project-subtitle">
+                    室內設計及裝修工程展示
+                </p>
+            </div>
+
+            <div class="gallery-container">
+                <!-- 主滑动展示区 -->
+                <div class="swiper gallery-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" data-title="啟德SEALY 01" data-desc="SEALY床褥展示區，採用開放式設計，讓顧客能親身體驗產品舒適度。">
+                            <img src="./images/啟德SEALY/01.jpg" alt="啟德SEALY 01" />
+                            <div class="image-caption">
+                                <h3 class="text-lg font-semibold">啟德SEALY 01</h3>
+                                <p class="text-sm opacity-80">SEALY床褥展示區，採用開放式設計，讓顧客能親身體驗產品舒適度。</p>
+                                <button class="view-fullscreen-btn">全屏查看</button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" data-title="啟德SEALY 02" data-desc="展示廳入口設計，結合品牌形象與現代感，營造專業購物氛圍。">
+                            <img src="./images/啟德SEALY/02.jpg" alt="啟德SEALY 02" />
+                            <div class="image-caption">
+                                <h3 class="text-lg font-semibold">啟德SEALY 02</h3>
+                                <p class="text-sm opacity-80">展示廳入口設計，結合品牌形象與現代感，營造專業購物氛圍。</p>
+                                <button class="view-fullscreen-btn">全屏查看</button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" data-title="啟德SEALY 03" data-desc="床褥產品陳列區，精心設計的燈光效果，突顯產品質感與細節。">
+                            <img src="./images/啟德SEALY/03.jpg" alt="啟德SEALY 03" />
+                            <div class="image-caption">
+                                <h3 class="text-lg font-semibold">啟德SEALY 03</h3>
+                                <p class="text-sm opacity-80">床褥產品陳列區，精心設計的燈光效果，突顯產品質感與細節。</p>
+                                <button class="view-fullscreen-btn">全屏查看</button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" data-title="啟德SEALY 04" data-desc="整體空間設計，融合品牌元素與現代美學，打造舒適的購物體驗。">
+                            <img src="./images/啟德SEALY/04.jpg" alt="啟德SEALY 04" />
+                            <div class="image-caption">
+                                <h3 class="text-lg font-semibold">啟德SEALY 04</h3>
+                                <p class="text-sm opacity-80">整體空間設計，融合品牌元素與現代美學，打造舒適的購物體驗。</p>
+                                <button class="view-fullscreen-btn">全屏查看</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-scrollbar"></div>
+                </div>
+
+                <!-- 缩略图网格 -->
+                <div class="thumbnail-grid">
+                    <div class="thumbnail-item" data-index="0">
+                        <img src="./images/啟德SEALY/01.jpg" alt="啟德SEALY 1" />
+                    </div>
+                    <div class="thumbnail-item" data-index="1">
+                        <img src="./images/啟德SEALY/02.jpg" alt="啟德SEALY 2" />
+                    </div>
+                    <div class="thumbnail-item" data-index="2">
+                        <img src="./images/啟德SEALY/03.jpg" alt="啟德SEALY 3" />
+                    </div>
+                    <div class="thumbnail-item" data-index="3">
+                        <img src="./images/啟德SEALY/04.jpg" alt="啟德SEALY 4" />
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="bg-gray-50 dark:bg-gray-800">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="py-8 text-center text-gray-600 dark:text-gray-400">
+                    <p data-lang data-lang-zh="&copy; 2024 高歌工程. All rights reserved." data-lang-en="&copy; 2024 KOCO ENGINEERING COMPANY LIMITED. All rights reserved.">&copy; 2024 高歌工程. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="./js/vendors/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // 初始化 AOS
+        AOS.init();
+        
+        // 自动检测和加载图片
+        async function loadProjectImages(projectFolder) {
+            console.log('Loading images for project:', projectFolder);
+            const swiperWrapper = document.querySelector('.swiper-wrapper');
+            const thumbnailGrid = document.querySelector('.thumbnail-grid');
+            
+            // 清空现有内容
+            swiperWrapper.innerHTML = '';
+            thumbnailGrid.innerHTML = '';
+            
+            try {
+                // 尝试加载图片
+                let imageCount = 0;
+                for (let i = 1; i <= 100; i++) { // 假设最多100张图片
+                    const paddedNumber = i.toString().padStart(2, '0');
+                    const imgPath = `./images/${projectFolder}/${paddedNumber}.jpg`;
+                    console.log('Trying to load image:', imgPath);
+                    
+                    const img = new Image();
+                    
+                    try {
+                        await new Promise((resolve, reject) => {
+                            img.onload = () => {
+                                console.log('Image loaded successfully:', imgPath);
+                                resolve();
+                            };
+                            img.onerror = () => {
+                                console.log('Failed to load image:', imgPath);
+                                reject();
+                            };
+                            img.src = imgPath;
+                        });
+                        
+                        // 图片加载成功,添加到Swiper
+                        const slide = document.createElement('div');
+                        slide.className = 'swiper-slide';
+                        slide.dataset.title = `${projectFolder}設計 ${paddedNumber}`;
+                        slide.dataset.desc = '現代簡約風格，融合自然光線';
+                        
+                        slide.innerHTML = `
+                            <div class="img-watermark-wrapper">
+                                <img src="${imgPath}" alt="${projectFolder} ${paddedNumber}" />
+                                <div class="img-watermark">高歌工程</div>
+                            </div>
+                            <div class="image-caption">
+                                <h3 class="text-lg font-semibold">${projectFolder}設計 ${paddedNumber}</h3>
+                                <p class="text-sm opacity-80">現代簡約風格，融合自然光線</p>
+                                <button class="view-fullscreen-btn">全屏查看</button>
+                            </div>
+                        `;
+                        
+                        swiperWrapper.appendChild(slide);
+                        
+                        // 添加到缩略图
+                        const thumbnail = document.createElement('div');
+                        thumbnail.className = 'thumbnail-item';
+                        thumbnail.dataset.index = imageCount;
+                        
+                        thumbnail.innerHTML = `
+                            <div class="img-watermark-wrapper">
+                                <img src="${imgPath}" alt="${projectFolder} ${paddedNumber}" />
+                                <div class="img-watermark">高歌工程</div>
+                            </div>
+                        `;
+                        
+                        thumbnailGrid.appendChild(thumbnail);
+                        
+                        imageCount++;
+                    } catch (e) {
+                        console.log('Error loading image:', imgPath, e);
+                        break;
+                    }
+                }
+                
+                console.log('Total images loaded:', imageCount);
+                
+                // 重新初始化Swiper
+                if (window.swiper) {
+                    window.swiper.destroy();
+                }
+                
+                window.swiper = new Swiper('.gallery-swiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    loop: true,
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true
+                    },
+                    effect: 'fade',
+                    fadeEffect: {
+                        crossFade: true
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                        dynamicBullets: true
+                    }
+                });
+                
+                // 重新绑定缩略图点击事件
+                document.querySelectorAll('.thumbnail-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        const index = parseInt(this.dataset.index);
+                        window.swiper.slideTo(index + 1);
+                    });
+                });
+                
+                // 初始化全屏查看功能
+                initFullscreen();
+                
+            } catch (error) {
+                console.error('加载图片时出错:', error);
+                // 显示错误信息
+                swiperWrapper.innerHTML = '<div class="error-message">加载图片失败,请检查图片路径是否正确</div>';
+            }
+        }
+        
+        // 页面加载完成后自动加载图片
+        document.addEventListener('DOMContentLoaded', function() {
+            // 从URL获取项目文件夹名称,如果没有则使用默认值
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectFolder = urlParams.get('project') || '啟德SEALY';
+            loadProjectImages(projectFolder);
+        });
+
+        // 語言切換功能與文本翻譯
+        const translations = {
+            zh: {
+                title: "啟德SEALY",
+                subtitle: "室內設計及裝修工程展示",
+                backBtn: "返回主頁",
+                langSwitch: "English",
+                imageDesc: "現代簡約風格，融合自然光線",
+                fullscreen: "全屏查看"
+            },
+            en: {
+                title: "Kai Tak SEALY",
+                subtitle: "Interior Design and Renovation Project Showcase",
+                backBtn: "Back to Home",
+                langSwitch: "中文",
+                imageDesc: "Modern minimalist style with natural lighting",
+                fullscreen: "View Fullscreen"
+            }
+        };
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'zh' : 'en';
+            localStorage.setItem('lang', currentLang);
+            updateLanguage();
+        }
+        
+        function updateLanguage() {
+            // 更新頁面文本
+            document.querySelector('.project-title').textContent = translations[currentLang].title;
+            document.querySelector('.project-subtitle').textContent = translations[currentLang].subtitle;
+            document.querySelector('.back-text').textContent = translations[currentLang].backBtn;
+            document.querySelector('.lang-text').textContent = translations[currentLang].langSwitch;
+            
+            // 更新圖片說明
+            document.querySelectorAll('.image-caption').forEach((caption, index) => {
+                const h3 = caption.querySelector('h3');
+                const p = caption.querySelector('p');
+                const btn = caption.querySelector('.view-fullscreen-btn');
+                
+                if (h3) h3.textContent = `${translations[currentLang].title} ${(index + 1).toString().padStart(2, '0')}`;
+                if (p) p.textContent = translations[currentLang].imageDesc;
+                if (btn) btn.textContent = translations[currentLang].fullscreen;
+            });
+        }
+        
+        // 初始化界面語言
+        document.addEventListener('DOMContentLoaded', updateLanguage);
+
+        // 全屏查看功能
+        function initFullscreen() {
+            const modal = document.getElementById('fullscreenModal');
+            const closeBtn = document.getElementById('fullscreenClose');
+            const fullscreenContainer = document.querySelector('.fullscreen-container');
+            const fullscreenCaption = document.getElementById('fullscreenCaption');
+            const viewBtns = document.querySelectorAll('.view-fullscreen-btn');
+            
+            // 获取所有图片
+            const slides = document.querySelectorAll('.swiper-slide');
+            let currentIndex = 0;
+            
+            // 点击全屏查看按钮
+            viewBtns.forEach((btn, index) => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const slide = this.closest('.swiper-slide');
+                    const imgWrapper = slide.querySelector('.img-watermark-wrapper').cloneNode(true);
+                    openFullscreen(imgWrapper, slide.dataset.title, slide.dataset.desc, index);
+                });
+            });
+            
+            // 打开全屏查看
+            function openFullscreen(imgWrapper, imgTitle, imgDesc, index) {
+                const modal = document.getElementById('fullscreenModal');
+                const fullscreenContainer = document.querySelector('.fullscreen-container');
+                const fullscreenCaption = document.getElementById('fullscreenCaption');
+                
+                // 清空并添加新的图片
+                fullscreenContainer.innerHTML = '';
+                fullscreenContainer.appendChild(imgWrapper);
+                
+                // 重新添加导航按钮
+                const navDiv = document.createElement('div');
+                navDiv.className = 'fullscreen-nav';
+                navDiv.innerHTML = `
+                    <button id="prevImage" class="fullscreen-btn">&lt;</button>
+                    <button id="nextImage" class="fullscreen-btn">&gt;</button>
+                `;
+                fullscreenContainer.appendChild(navDiv);
+                
+                // 重新绑定导航按钮事件
+                document.getElementById('prevImage').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                    const slide = slides[currentIndex];
+                    const newImgWrapper = slide.querySelector('.img-watermark-wrapper').cloneNode(true);
+                    openFullscreen(newImgWrapper, slide.dataset.title, slide.dataset.desc, currentIndex);
+                });
+                
+                document.getElementById('nextImage').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    const slide = slides[currentIndex];
+                    const newImgWrapper = slide.querySelector('.img-watermark-wrapper').cloneNode(true);
+                    openFullscreen(newImgWrapper, slide.dataset.title, slide.dataset.desc, currentIndex);
+                });
+                
+                fullscreenCaption.innerHTML = `<h3>${imgTitle || ''}</h3><p>${imgDesc || ''}</p>`;
+                
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                currentIndex = index;
+
+                // 添加窗口大小改变事件监听
+                window.addEventListener('resize', adjustFullscreenImageSize);
+                adjustFullscreenImageSize();
+            }
+            
+            // 调整全屏模式下的图片大小
+            function adjustFullscreenImageSize() {
+                const container = document.querySelector('.fullscreen-container');
+                const imgWrapper = container.querySelector('.img-watermark-wrapper');
+                const img = imgWrapper.querySelector('img');
+                
+                if (img) {
+                    const containerWidth = container.clientWidth;
+                    const containerHeight = container.clientHeight;
+                    const imgWidth = img.naturalWidth;
+                    const imgHeight = img.naturalHeight;
+                    
+                    // 计算缩放比例
+                    const scale = Math.min(
+                        containerWidth / imgWidth,
+                        containerHeight / imgHeight
+                    );
+                    
+                    // 应用缩放
+                    img.style.width = `${imgWidth * scale}px`;
+                    img.style.height = `${imgHeight * scale}px`;
+                }
+            }
+            
+            // 关闭全屏查看
+            closeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+                // 移除窗口大小改变事件监听
+                window.removeEventListener('resize', adjustFullscreenImageSize);
+            });
+            
+            // 点击空白区域关闭
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = '';
+                    // 移除窗口大小改变事件监听
+                    window.removeEventListener('resize', adjustFullscreenImageSize);
+                }
+            });
+            
+            // 键盘控制
+            document.addEventListener('keydown', function(e) {
+                if (modal.style.display === 'flex') {
+                    if (e.key === 'ArrowLeft') {
+                        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                        const slide = slides[currentIndex];
+                        const imgWrapper = slide.querySelector('.img-watermark-wrapper').cloneNode(true);
+                        openFullscreen(imgWrapper, slide.dataset.title, slide.dataset.desc, currentIndex);
+                    }
+                    if (e.key === 'ArrowRight') {
+                        currentIndex = (currentIndex + 1) % slides.length;
+                        const slide = slides[currentIndex];
+                        const imgWrapper = slide.querySelector('.img-watermark-wrapper').cloneNode(true);
+                        openFullscreen(imgWrapper, slide.dataset.title, slide.dataset.desc, currentIndex);
+                    }
+                    if (e.key === 'Escape') closeBtn.click();
+                }
+            });
+        }
+
+        // 初始化全屏查看功能
+        document.addEventListener('DOMContentLoaded', initFullscreen);
+
+        window.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('img').forEach(function(img) {
+                // 排除 logo 圖片（以 images/icon.png 為主）
+                if (
+                    img.src.includes('images/icon.png') ||
+                    img.classList.contains('logo') ||
+                    img.alt?.toLowerCase().includes('logo')
+                ) {
+                    return;
+                }
+                if (!img.closest('.img-watermark-wrapper')) {
+                    var wrapper = document.createElement('div');
+                    wrapper.className = 'img-watermark-wrapper';
+                    img.parentNode.insertBefore(wrapper, img);
+                    wrapper.appendChild(img);
+                    var watermark = document.createElement('div');
+                    watermark.className = 'img-watermark';
+                    watermark.textContent = '高歌工程';
+                    wrapper.appendChild(watermark);
+                }
+            });
+        });
+    </script>
+
+    <!-- 添加 fullscreenModal 元素到 body 末尾 -->
+    <div id="fullscreenModal" class="fullscreen-modal">
+        <button id="fullscreenClose" class="fullscreen-close">&times;</button>
+        <div class="fullscreen-container">
+            <img id="fullscreenImage" class="fullscreen-image" src="" alt="">
+            <div class="fullscreen-nav">
+                <button id="prevImage" class="fullscreen-btn">&lt;</button>
+                <button id="nextImage" class="fullscreen-btn">&gt;</button>
+            </div>
+        </div>
+        <div id="fullscreenCaption" class="fullscreen-caption"></div>
+    </div>
+</body>
+</html> 

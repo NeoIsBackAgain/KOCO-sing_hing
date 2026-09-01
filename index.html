@@ -1,0 +1,2479 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+<head>
+    <meta charset="utf-8">
+    <title data-lang data-lang-zh="高歌工程" data-lang-en="KOCO ENGINEERING COMPANY LIMITED">高歌工程</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="./css/vendors/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/vendors/swiper-bundle.min.css" />
+    <link href="./style.css" rel="stylesheet">
+    <script>
+    if (localStorage.getItem('dark-mode') == 'true' || !('dark-mode' in localStorage)) {
+        document.querySelector('html').classList.add('dark');
+    } else {
+        document.querySelector('html').classList.remove('dark');
+    }        
+
+    let lang = localStorage.getItem('lang') || 'zh';
+    setLanguage(lang);
+
+    function setLanguage(lang) {
+        document.documentElement.lang = lang;
+        localStorage.setItem('lang', lang);
+        
+        document.querySelectorAll("[data-lang]").forEach(element => {
+            element.innerText = element.getAttribute(`data-lang-${lang}`);
+        });
+    }
+
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-font: 'Noto Sans TC', sans-serif;
+            --secondary-font: 'Montserrat', sans-serif;
+            --heading-color: #1a1a1a;
+            --text-color: #4a4a4a;
+            --accent-color: #3ABAB4;
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --secondary-color: #818cf8;
+            --text-color-dark: #f3f4f6;
+            --bg-color: #ffffff;
+            --bg-color-dark: #111827;
+            --gradient-start: #4f46e5;
+            --gradient-end: #818cf8;
+            --shadow-color: rgba(79, 70, 229, 0.15);
+        }
+
+        body {
+            font-family: var(--primary-font);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--secondary-font);
+            color: var(--heading-color);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #2a8a85 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            font-family: var(--secondary-font);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        ul li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        a:hover {
+            color: #2a8a85;
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-color);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        input, textarea {
+            font-family: var(--primary-font);
+            font-size: 1rem;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e5e5;
+            border-radius: 0.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --heading-color: #ffffff;
+                --text-color: #e5e5e5;
+            }
+            
+            .card {
+                background: rgba(30, 30, 30, 0.95);
+            }
+            
+            input, textarea {
+                background: rgba(30, 30, 30, 0.95);
+                border-color: #404040;
+                color: var(--text-color);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+        }
+
+        /* 更新現有的統計數字樣式 */
+        .font-red-hat-display {
+            font-family: var(--secondary-font);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #2a8a85 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gray-600 {
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-button {
+            background: linear-gradient(135deg, #3ABAB4 0%, #2A8A85 100%);
+            color: white;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(58, 186, 180, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(58, 186, 180, 0.3);
+        }
+
+        .hero-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.2) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.2) 1px, transparent 1px);
+            background-size: 10px 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .hero-button:hover::before {
+            opacity: 1;
+        }
+
+        .hero-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .hero-button:hover::after {
+            transform: translateX(100%);
+        }
+
+        /* 輪播按鈕樣式 */
+        .carousel-prev,
+        .carousel-next {
+            background: rgba(58, 186, 180, 0.8);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-prev:hover,
+        .carousel-next:hover {
+            background: rgba(58, 186, 180, 1);
+            transform: translateY(-2px) translateX(0);
+        }
+        
+        /* 移除黑暗模式下的特殊樣式 */
+        .dark .carousel-prev,
+        .dark .carousel-next {
+            background: rgba(58, 186, 180, 0.8);
+        }
+        
+        .dark .carousel-prev:hover,
+        .dark .carousel-next:hover {
+            background: rgba(58, 186, 180, 1);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .text-primary {
+            color: var(--primary-color);
+        }
+
+        .border-primary {
+            border-color: var(--primary-color);
+        }
+
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+
+        .bg-primary-hover:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Update existing button styles */
+        .btn-sm {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-sm:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Update icon colors */
+        .text-teal-500 {
+            color: var(--primary-color);
+        }
+
+        /* Update social media buttons */
+        .social-button {
+            background-color: var(--primary-color);
+        }
+
+        .social-button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        :root {
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --secondary-color: #818cf8;
+            --text-color: #4f46e5;
+            --text-color-dark: #4f46e5;
+            --bg-color: #ffffff;
+            --bg-color-dark: #ffffff;
+            --gradient-start: #4f46e5;
+            --gradient-end: #818cf8;
+            --shadow-color: rgba(79, 70, 229, 0.15);
+        }
+
+        body {
+            background-color: #ffffff !important;
+            color: #4f46e5;
+        }
+
+        .dark {
+            background-color: #ffffff !important;
+            color: #4f46e5 !important;
+        }
+
+        .dark .text-gray-100,
+        .dark .text-gray-200,
+        .dark .text-gray-300,
+        .dark .text-gray-400,
+        .dark .text-gray-500,
+        .dark .text-gray-600,
+        .dark .text-gray-700,
+        .dark .text-gray-800,
+        .dark .text-gray-900 {
+            color: #4f46e5 !important;
+        }
+
+        .dark .bg-gray-800,
+        .dark .bg-gray-900 {
+            background-color: #ffffff !important;
+        }
+
+        header {
+            background-color: #ffffff !important;
+        }
+
+        footer {
+            background-color: #ffffff !important;
+        }
+
+        .bg-gray-50,
+        .bg-gray-100,
+        .bg-gray-200,
+        .bg-gray-300,
+        .bg-gray-400,
+        .bg-gray-500,
+        .bg-gray-600,
+        .bg-gray-700,
+        .bg-gray-800,
+        .bg-gray-900 {
+            background-color: #ffffff !important;
+        }
+
+        /* 更新所有效果相關的樣式 */
+        .bg-gradient-to-b,
+        .bg-gradient-to-l,
+        .bg-gradient-to-r,
+        .bg-gradient-to-t,
+        .bg-gradient-to-tr {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%) !important;
+            transition: all 0.3s ease;
+        }
+
+        .bg-gradient-to-b:hover,
+        .bg-gradient-to-l:hover,
+        .bg-gradient-to-r:hover,
+        .bg-gradient-to-t:hover,
+        .bg-gradient-to-tr:hover {
+            background: linear-gradient(135deg, var(--gradient-end) 0%, var(--gradient-start) 100%) !important;
+        }
+
+        .from-gray-100,
+        .from-gray-800,
+        .from-gray-900,
+        .from-indigo-500,
+        .from-pink-500,
+        .from-purple-500,
+        .from-teal-500,
+        .from-white {
+            background-color: #ffffff !important;
+        }
+
+        .via-gray-300,
+        .via-teal-400 {
+            background-color: #ffffff !important;
+        }
+
+        .to-gray-900,
+        .to-indigo-400,
+        .to-pink-400,
+        .to-purple-400,
+        .to-teal-400,
+        .to-white {
+            background-color: #ffffff !important;
+        }
+
+        /* 移除浮動動畫 */
+        @keyframes float {
+            0%, 100% {
+                transform: none;
+            }
+        }
+
+        .animate-float {
+            animation: none;
+            background-color: #ffffff !important;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .animate-float:hover {
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        /* 優化懸停效果 */
+        .hover\:bg-gray-50:hover,
+        .hover\:bg-indigo-500:hover,
+        .hover\:bg-pink-500:hover,
+        .hover\:bg-purple-400:hover,
+        .hover\:bg-purple-500:hover,
+        .hover\:bg-teal-400:hover,
+        .hover\:bg-teal-500:hover,
+        .hover\:bg-teal-600:hover {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        .hover\:bg-opacity-100:hover {
+            opacity: 1 !important;
+        }
+
+        /* 優化文字效果 */
+        .hover\:text-gray-100:hover,
+        .hover\:text-gray-900:hover,
+        .hover\:text-teal-500:hover {
+            color: var(--primary-color) !important;
+            transition: all 0.3s ease;
+        }
+
+        /* 優化陰影效果 */
+        .shadow {
+            box-shadow: 0 2px 4px var(--shadow-color) !important;
+            transition: all 0.3s ease;
+        }
+
+        .shadow-2xl {
+            box-shadow: 0 8px 16px var(--shadow-color) !important;
+        }
+
+        .shadow-lg {
+            box-shadow: 0 4px 8px var(--shadow-color) !important;
+        }
+
+        .shadow-xl {
+            box-shadow: 0 6px 12px var(--shadow-color) !important;
+        }
+
+        /* 優化模糊效果 */
+        .blur {
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            border: 1px solid rgba(79, 70, 229, 0.1);
+            box-shadow: 0 4px 16px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        .blur:hover {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 6px 20px var(--shadow-color);
+        }
+
+        /* 優化過渡效果 */
+        .transition,
+        .transition-all,
+        .transition-opacity {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms;
+        }
+
+        /* 優化深色模式效果 */
+        .dark .dark\:bg-gray-500,
+        .dark .dark\:bg-gray-700,
+        .dark .dark\:bg-gray-800,
+        .dark .dark\:bg-gray-900,
+        .dark .dark\:bg-indigo-500,
+        .dark .dark\:bg-indigo-600,
+        .dark .dark\:bg-pink-500,
+        .dark .dark\:bg-pink-600,
+        .dark .dark\:bg-purple-500,
+        .dark .dark\:bg-purple-600,
+        .dark .dark\:bg-teal-500,
+        .dark .dark\:bg-teal-600 {
+            background-color: #ffffff !important;
+            box-shadow: 0 2px 4px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        .dark .dark\:hover\:bg-gray-600:hover,
+        .dark .dark\:hover\:bg-gray-700:hover,
+        .dark .dark\:hover\:bg-indigo-600:hover,
+        .dark .dark\:hover\:bg-pink-600:hover,
+        .dark .dark\:hover\:bg-purple-600:hover,
+        .dark .dark\:hover\:bg-teal-500:hover,
+        .dark .dark\:hover\:bg-teal-600:hover {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        /* 優化按鈕效果 */
+        .btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        /* 優化卡片效果 */
+        .card {
+            transition: all 0.3s ease;
+            background-color: #ffffff;
+            border: 1px solid rgba(79, 70, 229, 0.1);
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        .social-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+    
+        .social-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+    
+        .social-button:hover {
+            transform: scale(1.1);
+        }
+    
+        .whatsapp-button {
+            background-color: #25D366;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            border: 1.5px solid #e5e7eb;
+        }
+    
+        .facebook-button {
+            background-color: #1877F2;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            border: 1.5px solid #e5e7eb;
+        }
+    
+        .social-button svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+    
+        @media (max-width: 768px) {
+            .social-buttons {
+                right: 10px;
+                bottom: 10px;
+            }
+    
+            .social-button {
+                width: 50px;
+                height: 50px;
+            }
+    
+            .social-button svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 4rem; /* 增加左右padding，为按钮留出空间 */
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            width: 100%;
+            height: 0;
+            top: 50%;
+            left: 0;
+            pointer-events: none; /* 确保按钮容器不会干扰点击 */
+        }
+
+        .carousel-prev,
+        .carousel-next {
+            pointer-events: auto; /* 恢复按钮的点击功能 */
+            margin: 0 1rem; /* 增加按钮的外边距 */
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .carousel-container {
+                padding: 0 3rem;
+            }
+        }
+
+        /* 悬停效果 */
+        .carousel-prev:hover,
+        .carousel-next:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* 按钮动画 */
+        .carousel-prev,
+        .carousel-next {
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .carousel-prev:hover,
+        .carousel-next:hover {
+            opacity: 1;
+        }
+
+        /* 添加渐变遮罩效果 */
+        .group:hover::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            transition: all 0.3s ease;
+        }
+
+        /* 确保文字在渐变遮罩之上 */
+        .group > div {
+            z-index: 2;
+        }
+
+        /* 图片缩放效果 */
+        .group:hover img {
+            transform: scale(1.05);
+        }
+        /* 文字动画效果 */
+        .group:hover .text-gold {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        /* 初始状态 */
+        .text-gold {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        /* 全站圖片水印 */
+        .img-watermark-wrapper {
+          position: relative;
+          display: inline-block;
+        }
+        .img-watermark-wrapper img {
+          display: block;
+        }
+        .img-watermark {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: rgba(255,255,255,0.92);
+          font-size: 2.2rem;
+          font-weight: bold;
+          pointer-events: none;
+          text-shadow: 0 2px 8px rgba(0,0,0,0.35), 0 0 2px #fff;
+          z-index: 2;
+          user-select: none;
+          white-space: nowrap;
+          letter-spacing: 0.08em;
+          opacity: 0.85;
+          font-family: 'Noto Sans TC', 'Montserrat', Arial, sans-serif;
+        }
+
+        .thumbnail-item {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .thumbnail-item .img-watermark-wrapper {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          pointer-events: none;
+          background: none;
+          z-index: 2;
+        }
+
+        .thumbnail-item .img-watermark {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          font-size: 1.2rem;
+          opacity: 0.85;
+        }
+    </style>
+    <script>
+    // 只為 .watermark-section 內的圖片加水印
+    window.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('img').forEach(function(img) {
+        // 排除 logo 圖片（以 images/icon.png 為主）
+        if (
+          img.src.includes('images/icon.png') ||
+          img.classList.contains('logo') ||
+          img.alt?.toLowerCase().includes('logo')
+        ) {
+          return;
+        }
+        // 首頁 Hero 區塊不加水印
+        var heroSection = document.querySelector('section');
+        if (heroSection && heroSection.contains(img)) {
+          return;
+        }
+        if (!img.closest('.img-watermark-wrapper')) {
+          var wrapper = document.createElement('div');
+          wrapper.className = 'img-watermark-wrapper';
+          img.parentNode.insertBefore(wrapper, img);
+          wrapper.appendChild(img);
+          var watermark = document.createElement('div');
+          watermark.className = 'img-watermark';
+          watermark.textContent = '高歌工程';
+          wrapper.appendChild(watermark);
+        }
+      });
+    });
+    </script>
+</head>
+
+<body class="font-inter antialiased bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 tracking-tight">
+   
+
+    <!-- Page wrapper -->
+    <div class="flex flex-col min-h-screen overflow-hidden">
+
+          
+        
+        <!-- Site header -->
+        <header class="absolute w-full z-30">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="flex items-center justify-between h-20">
+
+                    <!-- Site branding -->
+                    <div class="shrink-0 mr-5">
+                        <!-- Logo -->
+                        <a class="block" href="index.html" aria-label="Cruip">
+                            <!-- 使用圖片作為 Logo -->
+                            <img src="images/icon.png" alt="Logo" class="w-8 h-8" />
+                        </a>
+                    </div>
+
+                    <!-- Desktop navigation -->
+                    <nav class="hidden md:flex md:grow">
+
+                        <!-- Desktop menu links -->
+                        <ul class="flex grow flex-wrap items-center font-medium">
+                            <li>
+                                <a class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 px-5 py-2 flex items-center transition duration-150 ease-in-out"  href="#" data-lang data-lang-zh="首頁"  data-lang-en="Home">首頁</a>
+                            </li>
+                            <li>
+                                <a class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 px-5 py-2 flex items-center transition duration-150 ease-in-out"  href="#section1" data-lang data-lang-zh="關於我們"  data-lang-en="About Us">關於我們</a>
+                            </li>
+                            <li>
+                                <a class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 px-5 py-2 flex items-center transition duration-150 ease-in-out"  href="#section2" data-lang data-lang-zh="工程案例"  data-lang-en="Projects">工程案例</a>
+                            </li>
+                            <li>
+                                <a class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 px-5 py-2 flex items-center transition duration-150 ease-in-out" href="#contact" data-lang data-lang-zh="聯絡我們"  data-lang-en="Contact Us">聯絡我們</a>
+                            </li>
+                            <!-- 1st level: hover -->
+                            <li
+                                class="relative"
+                                x-data="{ open: false }"
+                                @mouseenter="open = true"
+                                @mouseleave="open = false"
+                            >
+                              
+                                <!-- 2nd level: hover -->
+                                <ul
+                                    class="origin-top-right absolute top-full left-0 w-40 bg-white dark:bg-gray-800 shadow-lg py-2 ml-4 rounded"
+                                    x-show="open"
+                                    x-transition:enter="transition ease-out duration-200 transform"
+                                    x-transition:enter-start="opacity-0 -translate-y-2"
+                                    x-transition:enter-end="opacity-100 translate-y-0"
+                                    x-transition:leave="transition ease-out duration-200"
+                                    x-transition:leave-start="opacity-100"
+                                    x-transition:leave-end="opacity-0"
+                                    x-cloak
+                                >
+                                    <li>
+                                        <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-500 flex py-2 px-4 leading-tight" href="help.html" @focus="open = true" @focusout="open = false">Help center</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+
+                       
+
+                    </nav>
+
+                    <div class="ml-4 flex items-center">
+                        <!-- Language Toggle -->
+                        <button onclick="setLanguage('zh')" class="text-gray-600 dark:text-gray-300 px-3">中文</button>
+                        <span>|</span>
+                        <button onclick="setLanguage('en')" class="text-gray-600 dark:text-gray-300 px-3">English</button>
+                        <span class="mx-2">|</span>
+                        <!-- Dark Mode Toggle -->
+                    </div>
+
+                    
+                    <!-- Mobile menu -->
+                    <div class="inline-flex md:hidden" x-data="{ expanded: false }">
+
+                        <!-- Mobile lights switch -->
+                        <div class="form-switch flex flex-col justify-center mr-6">
+                            <input type="checkbox" name="light-switch" id="light-switch-mobile" class="light-switch sr-only" />
+                            <label class="relative" for="light-switch-mobile">
+                                <span class="relative bg-gradient-to-t from-gray-100 to-white dark:from-gray-800 dark:to-gray-700 shadow-sm z-10" aria-hidden="true"></span>
+                                <svg class="absolute inset-0" width="44" height="24" viewBox="0 0 44 24" xmlns="http://www.w3.org/2000/svg">
+                                    <g class="fill-current text-white" fill-rule="nonzero" opacity=".88">
+                                        <path d="M32 8a.5.5 0 00.5-.5v-1a.5.5 0 10-1 0v1a.5.5 0 00.5.5zM35.182 9.318a.5.5 0 00.354-.147l.707-.707a.5.5 0 00-.707-.707l-.707.707a.5.5 0 00.353.854zM37.5 11.5h-1a.5.5 0 100 1h1a.5.5 0 100-1zM35.536 14.829a.5.5 0 00-.707.707l.707.707a.5.5 0 00.707-.707l-.707-.707zM32 16a.5.5 0 00-.5.5v1a.5.5 0 101 0v-1a.5.5 0 00-.5-.5zM28.464 14.829l-.707.707a.5.5 0 00.707.707l.707-.707a.5.5 0 00-.707-.707zM28 12a.5.5 0 00-.5-.5h-1a.5.5 0 100 1h1a.5.5 0 00.5-.5zM28.464 9.171a.5.5 0 00.707-.707l-.707-.707a.5.5 0 00-.707.707l.707.707z" />
+                                        <circle cx="32" cy="12" r="3" />
+                                        <circle fill-opacity=".4" cx="12" cy="12" r="6" />
+                                        <circle fill-opacity=".88" cx="12" cy="12" r="3" />
+                                    </g>
+                                </svg>
+                                <span class="sr-only">Switch to light / dark version</span>
+                            </label>
+                        </div>
+
+                        <!-- Hamburger button -->
+                        <button
+                            class="hamburger"
+                            :class="{ 'active': expanded }"
+                            @click.stop="expanded = !expanded"
+                            aria-controls="mobile-nav"
+                            :aria-expanded="expanded"
+                        >
+                            <span class="sr-only">Menu</span>
+                            <svg class="w-6 h-6 fill-current text-gray-900 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 transition duration-150 ease-in-out" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="4" width="24" height="2" rx="1" />
+                                <rect y="11" width="24" height="2" rx="1" />
+                                <rect y="18" width="24" height="2" rx="1" />
+                            </svg>
+                        </button>
+
+                        <!-- Mobile navigation -->
+                        <nav
+                            id="mobile-nav"
+                            class="fixed top-0 h-screen z-20 left-0 w-full max-w-sm -ml-16 overflow-scroll bg-white dark:bg-gray-900 shadow-lg no-scrollbar"
+                            @click.outside="expanded = false"
+                            @keydown.escape.window="expanded = false"
+                            x-show="expanded"
+                            x-transition:enter="transition ease-out duration-200 transform"
+                            x-transition:enter-start="opacity-0 -translate-x-full"
+                            x-transition:enter-end="opacity-100 translate-x-0"
+                            x-transition:leave="transition ease-out duration-200"
+                            x-transition:leave-start="opacity-100"
+                            x-transition:leave-end="opacity-0"
+                            x-cloak
+                        >
+                            <div class="py-6 pr-4 pl-20">
+                                <!-- Logo -->
+                                <a class="inline-block mb-4" href="index.html" aria-label="Cruip">
+                                    <img src="images/icon.png" alt="Logo" class="w-8 h-8" />
+                                </a>
+                                <!-- Links -->
+                                <ul>
+                                    <li>
+                                        <a class="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2" href="#" data-lang data-lang-zh="首頁" data-lang-en="Home">首頁</a>
+                                    </li>
+                                    <li>
+                                        <a class="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2" href="#section1" data-lang data-lang-zh="關於我們" data-lang-en="About Us">關於我們 </a>
+                                    </li>
+                                    <li>
+                                        <a class="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2" href="#section2" data-lang data-lang-zh="工程案例" data-lang-en="Projects"> 工程案例</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </nav>
+
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- Page content -->
+        <main class="grow">
+
+            <!-- Page illustration -->
+            <div class="relative max-w-6xl mx-auto h-0 pointer-events-none -z-1" aria-hidden="true">
+                <svg class="absolute top-0 right-0 transform translate-x-1/2 -mr-16 dark:opacity-40" width="800" height="502" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="400" cy="102" r="400" fill="url(#heroglow_paint0_radial)" fill-opacity=".6" />
+                    <circle cx="209" cy="289" r="170" fill="url(#heroglow_paint1_radial)" fill-opacity=".4" />
+                    <defs>
+                        <radialGradient id="heroglow_paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(90 149 251) scale(315.089)">
+                            <stop stop-color="#3ABAB4" />
+                            <stop offset="1" stop-color="#3ABAB4" stop-opacity=".01" />
+                        </radialGradient>
+                        <radialGradient id="heroglow_paint1_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(90 -40 249) scale(133.913)">
+                            <stop stop-color="#667EEA" />
+                            <stop offset="1" stop-color="#667EEA" stop-opacity=".01" />
+                        </radialGradient>
+                    </defs>
+                </svg>
+            </div>
+            
+            <!-- Hero -->
+            <section>
+                <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                    <div class="pt-32 pb-10 md:pt-40 md:pb-16">
+
+                        <!-- Hero content -->
+                        <div class="md:grid md:grid-cols-12 md:gap-12 lg:gap-20 items-center">
+                            
+                            <!-- Content -->
+                            <div class="md:col-span-7 lg:col-span-7 mb-8 md:mb-0 text-center md:text-left">
+                                <h1 class="h1 lg:text-5xl mb-4 font-red-hat-display font-black" data-lang data-lang-zh="高歌工程" data-lang-en="KOCO ENGINEERING COMPANY LIMITED">高歌工程</h1>
+                                <p class="text-xl text-gray-600 dark:text-gray-400 mb-6" data-lang data-lang-zh="專業室內設計 • 一站式工程服務" data-lang-en="Professional Interior Design • One-Stop Engineering Service">專業室內設計 • 一站式工程服務</p>
+                                <p class="text-lg text-gray-600 dark:text-gray-400 mb-8" data-lang data-lang-zh="十年專業經驗，為您打造理想空間" data-lang-en="10 Years of Professional Experience, Creating Your Ideal Space">十年專業經驗，為您打造理想空間</p>
+                                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                                    <a href="#contact" class="btn text-white bg-teal-500 hover:bg-teal-600" data-lang data-lang-zh="立即諮詢" data-lang-en="Contact Now">立即諮詢</a>
+                                    <a href="#section2" class="btn text-gray-700 bg-white hover:bg-gray-50 dark:text-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700" data-lang data-lang-zh="查看作品" data-lang-en="View Projects">查看作品</a>
+                                </div>
+                      
+                                <!-- CTA form -->
+                                
+                                <ul class="max-w-sm sm:max-w-md mx-auto md:max-w-none text-gray-600 dark:text-gray-400 mt-8 -mb-2" data-aos="fade-down" data-aos-delay="450">
+                                    <li class="flex items-center mb-2">
+                                        <svg class="w-3 h-3 fill-current text-teal-400 mr-2 shrink-0" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+                                        </svg>
+                                        <span data-lang data-lang-zh="商住空間設計專家  :  餐廳 • 商鋪 • 住宅工程定制" 
+                                              data-lang-en="Commercial & Residential Design Experts: Restaurants • Shops • Custom Home Renovations">
+                                            商住空間設計專家  :  餐廳 • 商鋪 • 住宅工程定制
+                                        </span>
+                                    </li>
+                                    <li class="flex items-center mb-2">
+                                        <svg class="w-3 h-3 fill-current text-teal-400 mr-2 shrink-0" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+                                        </svg>
+                                        <span data-lang data-lang-zh="優質工程 • 以心設計 :  免費專業意見 • 免費報價服務" 
+                                              data-lang-en="Quality Engineering • Thoughtful Design: Free Professional Consultation • Free Quotation Service">
+                                            優質工程 • 以心設計 :  免費專業意見 • 免費報價服務
+                                        </span>
+                                    </li>
+                                    <li class="flex items-center mb-2">
+                                        <svg class="w-3 h-3 fill-current text-teal-400 mr-2 shrink-0" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+                                        </svg>
+                                        <span data-lang data-lang-zh="專業室內設計 • 一站式工程服務  : 十年經驗 • 品質保證 • 合法認證" 
+                                              data-lang-en="Professional Interior Design • One-Stop Engineering Service: 10+ Years of Experience • Quality Assurance • Legal Certification">
+                                            專業室內設計 • 一站式工程服務  : 十年經驗 • 品質保證 • 合法認證
+                                        </span>
+                                    </li>
+                                </ul>
+                                
+                            </div>
+
+                            <!-- Mobile mockup -->
+                            <div class="md:col-span-5 lg:col-span-5 text-center md:text-right" x-data="{ modalExpanded: false }" data-aos="fade-up" data-aos-delay="450">
+                                <div class="inline-flex relative justify-center items-center">
+                                    <!-- Glow illustration -->
+                                    <svg class="absolute mr-12 mt-32 pointer-events-none -z-1 dark:opacity-40" aria-hidden="true" width="678" height="634" viewBox="0 0 678 634" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="240" cy="394" r="240" fill="url(#piphoneill_paint0_radial)" fill-opacity=".4" />
+                                        <circle cx="438" cy="240" r="240" fill="url(#piphoneill_paint1_radial)" fill-opacity=".6" />
+                                        <defs>
+                                            <radialGradient id="piphoneill_paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(90 -77 317) scale(189.054)">
+                                                <stop stop-color="#667EEA" />
+                                                <stop offset="1" stop-color="#667EEA" stop-opacity=".01" />
+                                            </radialGradient>
+                                            <radialGradient id="piphoneill_paint1_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(90 99 339) scale(189.054)">
+                                                <stop stop-color="#9F7AEA" />
+                                                <stop offset="1" stop-color="#9F7AEA" stop-opacity=".01" />
+                                            </radialGradient>
+                                        </defs>
+                                    </svg>
+                                    <!-- Image inside mockup size: 290x624px (or 580x1248px for Retina devices) -->
+                                    <img class="absolute" src="./images/展覽廳/05.jpg" width="290" height="624" style="max-width: 84.33%;" alt="Features illustration" />
+                                    <!-- iPhone mockup -->
+                                    <img class="relative max-w-full mx-auto md:mr-0 md:max-w-none h-auto pointer-events-none" src="./images/iphone-mockup.png" width="344" height="674" alt="iPhone mockup" aria-hidden="true" />
+                                    <!-- Play button -->
+                                   
+                                </div>
+
+                                <!-- Modal backdrop -->
+                                <div
+                                    class="fixed inset-0 z-50 bg-black bg-opacity-75 transition-opacity"
+                                    x-show="modalExpanded"
+                                    x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="opacity-0"
+                                    x-transition:enter-end="opacity-100"
+                                    x-transition:leave="transition ease-out duration-100"
+                                    x-transition:leave-start="opacity-100"
+                                    x-transition:leave-end="opacity-0"
+                                    aria-hidden="true"
+                                    x-cloak
+                                ></div>
+
+                                <!-- Modal dialog -->
+                                <div
+                                    id="modal"
+                                    class="fixed inset-0 z-50 overflow-hidden flex items-center justify-center transform px-4 sm:px-6"
+                                    role="dialog"
+                                    aria-modal="true"
+                                    aria-labelledby="modal-headline"
+                                    x-show="modalExpanded"
+                                    x-transition:enter="transition ease-in-out duration-200"
+                                    x-transition:enter-start="opacity-0 translate-y-8"
+                                    x-transition:enter-end="opacity-100 translate-y-0"
+                                    x-transition:leave="transition ease-in-out duration-200"
+                                    x-transition:leave-start="opacity-100 translate-y-0"
+                                    x-transition:leave-end="opacity-0 translate-y-8"
+                                    x-cloak
+                                >
+                                    <div class="bg-white overflow-auto max-w-6xl w-full max-h-full" @click.outside="modalExpanded = false" @keydown.escape.window="modalExpanded = false">
+                                        <div class="relative pb-9/16">
+                                            <video x-init="$watch('modalExpanded', value => value ? $el.play() : $el.pause())" class="absolute w-full h-full" width="1920" height="1080" loop controls>
+                                                <source src="./videos/video.mp4" type="video/mp4" />
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>                    
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats -->
+            <section class="relative">
+                <!-- 背景漸變（僅淺色模式） -->
+                <div class="absolute bottom-0 left-0 right-0 h-128 bg-gradient-to-t from-gray-100 to-white pointer-events-none -z-10 dark:hidden" aria-hidden="true"></div>
+            
+                <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+                    <div class="pb-12 md:pb-20">
+                        <div class="grid grid-cols-2 gap-4 lg:gap-6 md:grid-cols-4 text-center" data-aos-id-stats>
+                            <!-- 第 1 項 -->
+                            <div class="bg-white dark:bg-gray-800 py-8 px-1 shadow-2xl" data-aos="fade-down" data-aos-anchor="[data-aos-id-stats]">
+                                <div class="font-red-hat-display text-3xl font-black tracking-tighter mb-1">99+</div>
+                                <div class="text-gray-600 dark:text-gray-400" 
+                                     data-lang data-lang-zh="住宅建設項目完成數量" 
+                                     data-lang-en="Completed Residential Construction Projects">
+                                    住宅建設項目完成數量
+                                </div>
+                            </div>
+                            <!-- 第 2 項 -->
+                            <div class="bg-white dark:bg-gray-800 py-8 px-1 shadow-2xl" data-aos="fade-down" data-aos-anchor="[data-aos-id-stats]" data-aos-delay="100">
+                                <div class="font-red-hat-display text-3xl font-black tracking-tighter mb-1">7M+</div>
+                                <div class="text-gray-600 dark:text-gray-400" 
+                                     data-lang data-lang-zh="商業空間設計面積（平方米）" 
+                                     data-lang-en="Commercial Space Designed (sqm)">
+                                    商業空間設計面積（平方米）
+                                </div>
+                            </div>
+                            <!-- 第 3 項 -->
+                            <div class="bg-white dark:bg-gray-800 py-8 px-1 shadow-2xl" data-aos="fade-down" data-aos-anchor="[data-aos-id-stats]" data-aos-delay="200">
+                                <div class="font-red-hat-display text-3xl font-black tracking-tighter mb-1">95%+</div>
+                                <div class="text-gray-600 dark:text-gray-400" 
+                                     data-lang data-lang-zh="施工進度達標率" 
+                                     data-lang-en="Construction Progress Compliance Rate">
+                                    施工進度達標率
+                                </div>
+                            </div>
+                            <!-- 第 4 項 -->
+                            <div class="bg-white dark:bg-gray-800 py-8 px-1 shadow-2xl" data-aos="fade-down" data-aos-anchor="[data-aos-id-stats]" data-aos-delay="300">
+                                <div class="font-red-hat-display text-3xl font-black tracking-tighter mb-1">99+</div>
+                                <div class="text-gray-600 dark:text-gray-400" 
+                                     data-lang data-lang-zh="完成的設計方案數量" 
+                                     data-lang-en="Completed Design Proposals">
+                                    完成的設計方案數量
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+
+            <!-- Carousel -->
+            <section class="border-t border-transparent dark:border-gray-800 watermark-section" id="section1">
+                <div class="py-12 md:py-20">
+
+                    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+                        <!-- Section header -->
+                      <div class="max-w-3xl mx-auto text-center pb-12 md:pb-16">
+                <h1 class="h2 font-red-hat-display mb-4" 
+                    data-lang data-lang-zh="高歌工程於香港成立10年" 
+                    data-lang-en="KOCO ENGINEERING: 10 Years in Hong Kong">
+                    高歌工程於香港成立10年
+                </h1>
+                <p class="text-xl text-gray-600 dark:text-gray-400" 
+                    data-lang data-lang-zh="誠意為客戶提供專業室內設計及各類大小工程出牌等一站式服務 , 包括住宅、餐廳、酒樓及各類型商鋪等等，免費提供專業意見及免費報價，多年來深受客戶讚賞。" 
+                    data-lang-en="Dedicated to providing professional interior design and a one-stop solution for engineering projects, including residential, restaurants, hotels, and various retail shops. We offer free professional consultation and quotations, earning high praise from our clients over the years.">
+                    誠意為客戶提供專業室內設計及各類大小工程出牌等一站式服務 , 包括住宅、餐廳、酒樓及各類型商鋪等等，免費提供專業意見及免費報價，多年來深受客戶讚賞。
+                </p>
+            </div>
+
+
+                    </div>
+
+                    <!-- Carousel built with Swiper.js [https://swiperjs.com/] -->
+                    <!-- * Initialized in src/js/main.js -->
+                    <!-- * Custom styles in src/css/additional-styles/theme.scss -->
+                    <div class="carousel-container relative">
+                        <div class="carousel swiper-container">
+                            <div class="swiper-wrapper">
+                                <!-- Carousel items -->
+                                <div class="swiper-slide max-w-lg">
+                                    <a href="gallery1.html" class="group relative block overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105">
+                                        <img class="w-full h-full object-cover transition-all duration-500 group-hover:brightness-50" 
+                                             src="./images/展覽廳/01.jpg" 
+                                             width="540" 
+                                             height="460" 
+                                             alt="Carousel item 01" />
+                                        <!-- 添加金色边框效果 -->
+                                        <div class="absolute inset-[15px] border border-[#FFD700] opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                                        <!-- 文字内容容器 -->
+                                        <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                            <!-- 英文标题 -->
+                                            <span class="text-[#FFD700] text-2xl font-bold mb-2 tracking-wider">EDUCATION FACILITIES</span>
+                                            <!-- 中文标题 -->
+                                            <span class="text-white text-3xl font-bold mb-4 tracking-[0.2em]" >校 園 翻 新 工 程</span>
+                                            <!-- 查看更多按钮 -->
+                                            <div class="mt-4 border border-[#FFD700] px-6 py-2 text-[#FFD700] hover:bg-[#FFD700] hover:text-black transition-all duration-300">
+                                                查看更多
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                
+                                <div class="swiper-slide max-w-lg">
+                                    <a href="gallery2.html" class="group relative block overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105">
+                                        <img class="transition-all duration-500 group-hover:brightness-75" 
+                                             src="./images/啟德名苑/01.jpg" 
+                                             width="540" 
+                                             height="460" 
+                                             alt="Carousel item 02" />
+                                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+                                        <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-0 translate-y-4">
+                                            <span class="text-white text-2xl font-bold mb-2">啟德名苑</span>
+                                            <span class="text-white text-lg">查看更多圖片</span>
+                                            <div class="mt-4 p-2 bg-teal-500 rounded-full">
+                                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide max-w-lg">
+                                    <a href="gallery3.html" class="group relative block overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105">
+                                        <img class="transition-all duration-500 group-hover:brightness-75" 
+                                             src="./images/同鄉會會所餐廳設計/04.jpg" 
+                                             width="540" 
+                                             height="460" 
+                                             alt="Carousel item 01" />
+                                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+                                        <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-0 translate-y-4">
+                                            <span class="text-white text-2xl font-bold mb-2">同鄉會會所餐廳設計</span>
+                                            <span class="text-white text-lg">查看更多圖片</span>
+                                            <div class="mt-4 p-2 bg-teal-500 rounded-full">
+                                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide max-w-lg">
+                                    <a href="gallery4.html" class="group relative block overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105">
+                                        <img class="transition-all duration-500 group-hover:brightness-75" 
+                                             src="./images/啟德SEALY/03.jpg" 
+                                             width="540" 
+                                             height="460" 
+                                             alt="Carousel item 04" />
+                                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+                                        <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-0 translate-y-4">
+                                            <span class="text-white text-2xl font-bold mb-2">啟德SEALY</span>
+                                            <span class="text-white text-lg">查看更多圖片</span>
+                                            <div class="mt-4 p-2 bg-teal-500 rounded-full">
+                                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide max-w-lg">
+                                    <a href="gallery5.html" class="group relative block overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105">
+                                        <img 
+                                          src="./images/大坑施弼街寵物美容Cafe工程/04.png" 
+                                          width="540" 
+                                          height="360" 
+                                          alt="大坑施弼街寵物美容Cafe工程"
+                                          style="object-fit: cover; object-position: center; aspect-ratio: 3/2; height: 360px; max-height: 360px;" />
+                                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+                                        <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-0 translate-y-4">
+                                            <span class="text-white text-2xl font-bold mb-2">大坑施弼街寵物美容Cafe工程</span>
+                                            <span class="text-white text-lg">查看更多圖片</span>
+                                            <div class="mt-4 p-2 bg-teal-500 rounded-full">
+                                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 将按钮移到 swiper-container 外部 -->
+                        <div class="carousel-buttons">
+                            <button class="carousel-prev absolute left-0 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 p-1 flex items-center justify-center rounded-full">
+                                <span class="sr-only">Previous</span>
+                                <svg class="w-4 h-4 fill-current text-white" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.7 14.7l1.4-1.4L3.8 9H16V7H3.8l4.3-4.3-1.4-1.4L0 8z" />
+                                </svg>
+                            </button>
+                            
+                            <button class="carousel-next absolute right-0 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 p-1 flex items-center justify-center rounded-full">
+                                <span class="sr-only">Next</span>
+                                <svg class="w-4 h-4 fill-current text-white" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.3 14.7l-1.4-1.4L12.2 9H0V7h12.2L7.9 2.7l1.4-1.4L16 8z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Tabs -->
+            <section class="relative border-t border-transparent dark:border-gray-800 bg-white watermark-section" id="section2">
+                <!-- Background gradient removed -->
+                <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+                    <div class="py-12 md:py-20">
+
+                        <!-- Section header -->
+                        <div class="max-w-3xl mx-auto text-center pb-12 md:pb-16">
+                            <h2 class="h2 font-red-hat-display mb-4"  data-lang data-lang-zh="你的夢想，由我們幫你實現" 
+                            data-lang-en="Your Dream, We Make It Happen">你的夢想，由我們幫你實現</h2>
+                            <p class="text-xl text-gray-600 dark:text-gray-400" data-lang data-lang-zh="你的設計夢想和我們的專業,一起打造理想的設計空間" 
+                            data-lang-en="Your design dreams and our expertise, creating the perfect space together">你的設計夢想和我們的專業,一起打造理想的設計空間</p>
+                        </div>
+
+                       <!-- Section content -->
+                       <div x-data="{ category: '1' }">
+                        <div class="grid lg:grid-cols-3 gap-12 lg:gap-6">
+                            <!-- Category buttons (保持不變) -->
+                            <div class="lg:col-span-1 lg:pr-16 flex flex-wrap justify-center lg:flex-col lg:justify-start -m-1 lg:mx-0">
+                                <button
+                                    class="lg:w-full font-medium px-3 py-2 shadow transition duration-150 ease-in-out rounded flex items-center justify-center lg:justify-start m-1 lg:mx-0"
+                                    :class="category === '1' ? 'bg-teal-500 hover:bg-teal-500 dark:bg-teal-600 dark:hover:bg-teal-600 dark:bg-opacity-25 dark:hover:bg-opacity-25' : 'bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700'"
+                                    @click="category = '1'"
+                                >
+                                    <span :class="category === '1' ? 'text-white dark:text-teal-400' : 'text-gray-600 dark:text-gray-300'"  data-lang data-lang-zh="全部作品" data-lang-en="All Projects">全部作品</span>
+                                </button>
+                                <button
+                                    class="lg:w-full font-medium px-3 py-2 shadow transition duration-150 ease-in-out rounded flex items-center justify-center lg:justify-start m-1 lg:mx-0"
+                                    :class="category === '2' ? 'bg-teal-500 hover:bg-teal-500 dark:bg-teal-600 dark:hover:bg-teal-600 dark:bg-opacity-25 dark:hover:bg-opacity-25' : 'bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700'"
+                                    @click="category = '2'"
+                                >
+                                    <span :class="category === '2' ? 'text-white dark:text-teal-400' : 'text-gray-600 dark:text-gray-300'" data-lang data-lang-zh="家具/床具相關工程" data-lang-en="Furniture & Bedding Projects">家具/床具相關工程</span>
+                                </button>
+                                <button
+                                    class="lg:w-full font-medium px-3 py-2 shadow transition duration-150 ease-in-out rounded flex items-center justify-center lg:justify-start m-1 lg:mx-0"
+                                    :class="category === '3' ? 'bg-teal-500 hover:bg-teal-500 dark:bg-teal-600 dark:hover:bg-teal-600 dark:bg-opacity-25 dark:hover:bg-opacity-25' : 'bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700'"
+                                    @click="category = '3'"
+                                >
+                                    <span :class="category === '3' ? 'text-white dark:text-teal-400' : 'text-gray-600 dark:text-gray-300'"  data-lang data-lang-zh="住宅/住宅相關工程" data-lang-en="Residential Projects">住宅/住宅相關工程</span>
+                                </button>
+                                <button
+                                    class="lg:w-full font-medium px-3 py-2 shadow transition duration-150 ease-in-out rounded flex items-center justify-center lg:justify-start m-1 lg:mx-0"
+                                    :class="category === '4' ? 'bg-teal-500 hover:bg-teal-500 dark:bg-teal-600 dark:hover:bg-teal-600 dark:bg-opacity-25 dark:hover:bg-opacity-25' : 'bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700'"
+                                    @click="category = '4'"
+                                >
+                                    <span :class="category === '4' ? 'text-white dark:text-teal-400' : 'text-gray-600 dark:text-gray-300'" data-lang data-lang-zh="商業/辦公空間工程" data-lang-en="Commercial & Office Spaces">商業/辦公空間工程</span>
+                                </button>
+                                <button
+                                class="lg:w-full font-medium px-3 py-2 shadow transition duration-150 ease-in-out rounded flex items-center justify-center lg:justify-start m-1 lg:mx-0"
+                                :class="category === '5' ? 'bg-teal-500 hover:bg-teal-500 dark:bg-teal-600 dark:hover:bg-teal-600 dark:bg-opacity-25 dark:hover:bg-opacity-25' : 'bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700'"
+                                @click="category = '5'"
+                            >
+                                <span :class="category === '5' ? 'text-white dark:text-teal-400' : 'text-gray-600 dark:text-gray-300'" data-lang data-lang-zh="餐飲/休閒場所設計工程"
+                                data-lang-en="Dining/Leisure Venue Design Projects" >餐飲/休閒場所設計工程</span>
+                            </button>
+                            <button
+                                class="lg:w-full font-medium px-3 py-2 shadow transition duration-150 ease-in-out rounded flex items-center justify-center lg:justify-start m-1 lg:mx-0"
+                                :class="category === '6' ? 'bg-teal-500 hover:bg-teal-500 dark:bg-teal-600 dark:hover:bg-teal-600 dark:bg-opacity-25 dark:hover:bg-opacity-25' : 'bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700'"
+                                @click="category = '6'"
+                            >
+                                <span :class="category === '6' ? 'text-white dark:text-teal-400' : 'text-gray-600 dark:text-gray-300'"  data-lang data-lang-zh="特殊用途設施工程"
+                                data-lang-en="Special Purpose Facility Projects">特殊用途設施工程</span>
+                            </button>
+                            </div>
+
+                            <!-- Projects Grid -->
+                            <div class="lg:col-span-2 max-w-sm mx-auto md:max-w-3xl lg:max-w-none">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <!-- 家具/床具相關工程 -->
+                                    <div x-show="['1', '2'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/啟德TEMPUR/01.jpg" loading="lazy" decoding="async" alt="啟德TEMPUR" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" 
+                                                            data-lang data-lang-zh="查看更多" 
+                                                            data-lang-en="View More">
+                                                            查看更多
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"  data-lang data-lang-zh="啟德TEMPUR" 
+                                                    data-lang-en="Kai Tak TEMPUR">啟德TEMPUR</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div x-show="['1', '2'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/啟德SEALY/02.jpg" loading="lazy" decoding="async" alt="啟德SEALY" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium" data-lang data-lang-zh="啟德SEALY" 
+                                                    data-lang-en="Kai Tak SEALY">啟德SEALY</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div x-show="['1', '2'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/元朗形點Sealy/01.jpg" loading="lazy" decoding="async" alt="元朗形點Sealy" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="元朗形點Sealy" 
+                                                    data-lang-en="Yuen Long Sealy">
+                                                  元朗形點Sealy
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <!-- 住宅/住宅相關工程 -->
+                                    <div x-show="['1', '3'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/浪澄灣住宅/01.jpg" loading="lazy" decoding="async" alt="浪澄灣住宅" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="浪澄灣住宅" 
+                                                    data-lang-en="The Long Beach">
+                                                  浪澄灣住宅
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div x-show="['1', '3'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/翠屏邨單位/02.jpg" loading="lazy" decoding="async" alt="翠屏邨單位" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="翠屏邨單位" 
+                                                    data-lang-en="Tsui Ping Estate">
+                                                  翠屏邨單位
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div x-show="['1', '3'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/浪琴園/01.jpg" loading="lazy" decoding="async" alt="浪琴園" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="浪琴園" 
+                                                    data-lang-en="Pacific View">
+                                                    浪琴園
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+                                    <!-- 商業/辦公空間 -->
+                                    <div x-show="['1', '4'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/上環干諾道西時代商業大廈寫字樓/01.jpg" loading="lazy" decoding="async" alt="上環干諾道西時代商業大廈寫字樓" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="上環干諾道西時代商業大廈寫字樓" 
+                                                    data-lang-en="SHEUNG WAN SI TOI COMMERCIAL BUILDING">
+                                                  上環干諾道西時代商業大廈寫字樓
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div x-show="['1', '4'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/尖沙咀加拿芬廣場4樓鮮味蒸滾鍋/01.jpg" loading="lazy" decoding="async" alt="尖沙咀加拿芬廣場4樓鮮味蒸滾鍋" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="尖沙咀加拿芬廣場4樓鮮味蒸滾鍋" 
+                                                    data-lang-en="Fresh Taste Steam Hotpot">
+                                                    尖沙咀加拿芬廣場4樓鮮味蒸滾鍋
+                                                </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div x-show="['1', '4'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/杏花新城美京大酒樓/01.jpg" loading="lazy" decoding="async" alt="杏花新城美京大酒樓" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="杏花新城美京大酒樓" 
+                                                    data-lang-en="Meiging Restaurant">
+                                                    杏花新城美京大酒樓
+                                                </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <!-- 餐飲/休閒場所 -->
+                                    <div x-show="['1', '5'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/同鄉會會所餐廳設計/01.jpg" loading="lazy" decoding="async" alt="同鄉會會所餐廳設計" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="同鄉會會所餐廳設計" 
+                                                    data-lang-en="Clubhouse Restaurant Design">
+                                                  同鄉會會所餐廳設計
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div x-show="['1', '5'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/啟德名苑/01.jpg" loading="lazy" decoding="async" alt="啟德名苑" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="啟德名苑" 
+                                                    data-lang-en="Ming Garden Restaurant">
+                                                  啟德名苑
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div x-show="['1', '5'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/大角咀鮮味蒸滾鍋/01.jpg" loading="lazy" decoding="async" alt="大角咀鮮味蒸滾鍋" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="大角咀鮮味蒸滾鍋" 
+                                                    data-lang-en="Tai Kok Tsui steamhotpot">
+                                                  大角咀鮮味蒸滾鍋
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                                                            <div x-show="['1', '5'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/西環蒸滾鍋/01.jpg" loading="lazy" decoding="async" alt="西環蒸滾鍋" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="西環蒸滾鍋" 
+                                                    data-lang-en="Sai Wan steamhotpot">
+                                                  西環蒸滾鍋
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div> 
+
+                                    <div x-show="['1', '5'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/荃灣朝日館/04.jpg" loading="lazy" decoding="async" alt="荃灣朝日館設計" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="荃灣朝日館設計" 
+                                                    data-lang-en="risingsun.restaurant">
+                                                  荃灣朝日館設計
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+                                                                            <div x-show="['1', '5'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/占士廚房/04.jpg" loading="lazy" decoding="async" alt="占士廚房" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="占士廚房" 
+                                                    data-lang-en="James Kitchen">
+                                                  占士廚房
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                  <div x-show="['1', '5'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/鴨脷洲喜泰美/01.jpg" loading="lazy" decoding="async" alt="鴨脷洲喜泰美" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="鴨脷洲喜泰美" 
+                                                    data-lang-en="HeyThaiMei">
+                                                  鴨脷洲喜泰美
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    
+                                    <div x-show="['1', '5'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/觀塘廣場鮮味蒸滾鍋/01.jpg" loading="lazy" decoding="async" alt="觀塘廣場鮮味蒸滾鍋" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="觀塘廣場鮮味蒸滾鍋" 
+                                                    data-lang-en="Kwun Tong Plaza steamhotpot">
+                                                    觀塘廣場鮮味蒸滾鍋
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div x-show="['1', '5'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/銅鑼灣世貿中心Mild/01.jpg" loading="lazy" decoding="async" alt="銅鑼灣世貿中心Mild" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="銅鑼灣世貿中心Mild" 
+                                                    data-lang-en="Mild">
+                                                    銅鑼灣世貿中心Mild
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    
+                                    <!-- 特殊用途設施 -->
+                                    <div x-show="['1', '6'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/學校室內設計/01.jpg" loading="lazy" decoding="async" alt="學校室內設計" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="學校室內設計" 
+                                                    data-lang-en="School Interior Design">
+                                                  學校室內設計
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div x-show="['1', '6'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/展覽廳/01.jpg" loading="lazy" decoding="async" alt="展覽廳" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="展覽廳" 
+                                                    data-lang-en="Exhibition Hall">
+                                                  展覽廳
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div x-show="['1', '6'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/灣仔會展健身器材展覽佈景/02.jpg" loading="lazy" decoding="async" alt="灣仔會展健身器材展覽佈景" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="灣仔會展健身器材展覽佈景" 
+                                                    data-lang-en="Wan Chai Exhibition Fitness Equipment Display">
+                                                  灣仔會展健身器材展覽佈景
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+                                    <div x-show="['1', '6'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/深水埗鮮味蒸滾鍋/02.jpg" loading="lazy" decoding="async" alt="深水埗鮮味蒸滾鍋" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="深水埗鮮味蒸滾鍋" 
+                                                    data-lang-en="Wan Chai Exhibition Fitness Equipment Display">
+                                                  深水埗鮮味蒸滾鍋
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+                                    <div x-show="['1', '6'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/深水埗鮮味蒸滾鍋/02.jpg" loading="lazy" decoding="async" alt="深水埗鮮味蒸滾鍋" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="深水埗鮮味蒸滾鍋" 
+                                                    data-lang-en="Sham Shui Po Fresh-Steamed & Hot Pot Delights">
+                                                  深水埗鮮味蒸滾鍋
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+                                    <div x-show="['1', '6'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/西沙-五滬四海/02.jpg" loading="lazy" decoding="async" alt="西沙-五滬四海" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="西沙-五滬四海" 
+                                                    data-lang-en="Xisha—Five Lakes and Four Seas">
+                                                  西沙-五滬四海
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    
+                                    
+                                    
+
+                                    <div x-show="['1', '6'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/將軍澳新都城名苑/02.jpg" loading="lazy" decoding="async" alt="將軍澳新都城名苑" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="將軍澳新都城名苑" 
+                                                    data-lang-en="The Metropolis, Tseung Kwan O">
+                                                  將軍澳新都城名苑
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
+                                    <div x-show="['1', '6'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/灣仔瑞安中心寫字樓/02.jpg" loading="lazy" decoding="async" alt="灣仔瑞安中心寫字樓" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="灣仔瑞安中心寫字樓" 
+                                                    data-lang-en="Shui On Centre Office, Wan Chai">
+                                                  灣仔瑞安中心寫字樓
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+                                 <div x-show="['1', '6'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/銅鑼灣皇室堡Sealy/02.jpg" loading="lazy" decoding="async" alt="銅鑼灣皇室堡Sealy" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="將軍澳新都城名苑" 
+                                                    data-lang-en="Sealy at Windsor House, Causeway Bay">
+                                                  銅鑼灣皇室堡Sealy
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    
+                                    
+
+
+                                     <div x-show="['1', '6'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/西半山羅便臣道嘉兆台/02.jpg" loading="lazy" decoding="async" alt="西半山羅便臣道嘉兆台" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="西半山羅便臣道嘉兆台" 
+                                                    data-lang-en="Ka Chiu Terrace, Robinson Road, Mid-Levels West, Hong Kong">
+                                                  西半山羅便臣道嘉兆台
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+                                    <div x-show="['1', '6'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/多功能室內運動場/02.jpg" loading="lazy" decoding="async" alt="多功能室內運動場" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="多功能室內運動場" 
+                                                    data-lang-en="Multifunctional Indoor Sports Hall">
+                                                    多功能室內運動場
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div x-show="['1', '6'].includes(category)">
+                                        <a href="allphoto.html" class="block relative group rounded-lg overflow-hidden shadow-md">
+                                            <img class="w-full h-64 object-cover" src="./images/灣仔會展健身器材展覽/02.jpg" loading="lazy" decoding="async" alt="灣仔會展健身器材展覽" />
+                                            <div class="absolute inset-0 flex flex-col">
+                                                <div class="grow flex justify-center items-center">
+                                                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 absolute inset-0 flex items-center justify-center">
+                                                        <span class="text-white font-medium" data-lang data-lang-zh="查看更多" 
+                                                        data-lang-en="View More">查看更多</span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full bottom-0 px-6 py-3 bg-white opacity-90 dark:bg-gray-900 flex justify-between items-center">
+                                                    <span class="text-gray-900 dark:text-gray-400 font-medium"
+                                                    data-lang data-lang-zh="灣仔會展健身器材展覽" 
+                                                    data-lang-en="Wan Chai Exhibition Fitness">
+                                                    灣仔會展健身器材展覽
+                                              </span>
+                                                                                                  </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!-- ADMIN_UPLOAD_INSERT_POINT -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+            
+            <!-- Process -->
+            <section class="relative">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6" id="section3">
+                    <div class="py-12 md:py-20 border-t border-gray-200 dark:border-gray-800">
+            
+                        <!-- Section header -->
+                        <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+                            <h2 class="h2 font-red-hat-display mb-4"
+                            data-lang data-lang-zh="將每一個元素都打造和設計得完美無瑕"
+                            data-lang-en="Designing and crafting every element to perfection">
+                            "將每一個元素都打造和設計得完美無瑕"
+                        </h2>
+                        <p class="text-xl text-gray-600 dark:text-gray-400"
+                            data-lang data-lang-zh="經驗與創新並行，我們為每個項目注入生命與靈魂"
+                            data-lang-en="Experience and innovation go hand in hand, breathing life and soul into every project">
+                            經驗與創新並行，我們為每個項目注入生命與靈魂
+                        </p>
+                        
+                        </div>
+            
+                        <!-- Items -->
+                        <div class="max-w-sm mx-auto grid gap-12 md:gap-x-6 lg:gap-x-12 md:grid-cols-1 lg:grid-cols-3 items-start md:max-w-none">
+            
+                            <!-- 1st item -->
+                            <div class="relative flex flex-col items-center">
+                                <!-- Number -->
+                                <div class="w-12 h-12 rounded-full bg-teal-400 dark:bg-teal-600 dark:bg-opacity-25 flex justify-center items-center text-white dark:text-teal-400 font-medium mb-8 lg:mb-12">1</div>
+                                <!-- Mobile mockup -->
+                                <div class="relative w-full h-[400px]">
+                                    <img class="w-full h-full object-cover" src="./images/荃灣朝日館/01.jpg" alt="App screen 02" />
+                                </div>
+                            </div>
+            
+                            <!-- 2nd item -->
+                            <div class="relative flex flex-col items-center">
+                                <!-- Number -->
+                                <div class="w-12 h-12 rounded-full bg-teal-400 dark:bg-teal-600 dark:bg-opacity-25 flex justify-center items-center text-white dark:text-teal-400 font-medium mb-8 lg:mb-12">2</div>
+                                <!-- Mobile mockup -->
+                                <div class="relative w-full h-[400px]">
+                                    <img class="w-full h-full object-cover" src="./images/啟德名苑/05.jpg" alt="App screen 03" />
+                                </div>
+                            </div>
+            
+                            <!-- 3rd item -->
+                            <div class="relative flex flex-col items-center">
+                                <!-- Number -->
+                                <div class="w-12 h-12 rounded-full bg-teal-400 dark:bg-teal-600 dark:bg-opacity-25 flex justify-center items-center text-white dark:text-teal-400 font-medium mb-8 lg:mb-12">3</div>
+                                <!-- Mobile mockup -->
+                                <div class="relative w-full h-[400px]">
+                                    <img class="w-full h-full object-cover" src="./images/學校室內設計/08.jpg" alt="App screen 04" />
+                                </div>
+                            </div>
+            
+                        </div>
+            
+                    </div>
+                </div>
+            </section>
+            
+
+
+
+
+            <section>
+                <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                    <div class="py-12 md:py-20 border-t border-gray-200 dark:border-gray-800 bg-white">
+                        <!-- Section header -->
+                        <div class="max-w-3xl mx-auto text-center pb-12 md:pb-16">
+                            <h1 class="h2 font-red-hat-display mb-4"
+                                data-lang data-lang-zh="我們不僅是工匠，我們是您理想空間的實現者。"
+                                data-lang-en="We are not just architects; we are the realizers of your ideal space.">
+                                我們不僅是工匠，我們是您理想空間的實現者。
+                            </h1>
+                            <p class="text-xl text-gray-600 dark:text-gray-400"
+                                data-lang data-lang-zh="您的建築願景，從這裡開始。"
+                                data-lang-en="Your architectural vision starts here.">
+                                您的願景，從這裡開始。
+                            </p>
+                        </div>
+                        <!-- Services Grid -->
+                        <div class="services-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                            <div class="service-card bg-white shadow rounded-lg p-6 flex flex-col items-center text-center">
+                                <div class="text-4xl mb-3">🏗️</div>
+                                <div class="font-bold text-lg mb-1" data-lang data-lang-zh="合法改建工程" data-lang-en="Legal Alteration Works">合法改建工程</div>
+                                <div class="text-sm text-gray-500" data-lang data-lang-zh="專業處理各類合法改建項目" data-lang-en="Professional handling of all kinds of legal alteration projects">專業處理各類合法改建項目</div>
+                            </div>
+                            <div class="service-card bg-white shadow rounded-lg p-6 flex flex-col items-center text-center">
+                                <div class="text-4xl mb-3">🏠</div>
+                                <div class="font-bold text-lg mb-1" data-lang data-lang-zh="單位設計及裝修" data-lang-en="Unit Design & Renovation">單位設計及裝修</div>
+                                <div class="text-sm text-gray-500" data-lang data-lang-zh="量身打造理想居家空間" data-lang-en="Tailor-made ideal home space">量身打造理想居家空間</div>
+                            </div>
+                            <div class="service-card bg-white shadow rounded-lg p-6 flex flex-col items-center text-center">
+                                <div class="text-4xl mb-3">🛋️</div>
+                                <div class="font-bold text-lg mb-1" data-lang data-lang-zh="傢俬訂製服務" data-lang-en="Custom Furniture Service">傢俬訂製服務</div>
+                                <div class="text-sm text-gray-500" data-lang data-lang-zh="個性化傢俬設計與製作" data-lang-en="Personalized furniture design and production">個性化傢俬設計與製作</div>
+                            </div>
+                            <div class="service-card bg-white shadow rounded-lg p-6 flex flex-col items-center text-center">
+                                <div class="text-4xl mb-3">🛁</div>
+                                <div class="font-bold text-lg mb-1" data-lang data-lang-zh="廚房及浴室翻新" data-lang-en="Kitchen & Bathroom Renovation">廚房及浴室翻新</div>
+                                <div class="text-sm text-gray-500" data-lang data-lang-zh="廚房浴室空間全面升級" data-lang-en="Comprehensive upgrade of kitchen and bathroom spaces">廚房浴室空間全面升級</div>
+                            </div>
+                            <div class="service-card bg-white shadow rounded-lg p-6 flex flex-col items-center text-center">
+                                <div class="text-4xl mb-3">🏬</div>
+                                <div class="font-bold text-lg mb-1" data-lang data-lang-zh="店舖設計及裝修" data-lang-en="Shop Design & Renovation">店舖設計及裝修</div>
+                                <div class="text-sm text-gray-500" data-lang data-lang-zh="專業商業空間設計" data-lang-en="Professional commercial space design">專業商業空間設計</div>
+                            </div>
+                            <div class="service-card bg-white shadow rounded-lg p-6 flex flex-col items-center text-center">
+                                <div class="text-4xl mb-3">🏢</div>
+                                <div class="font-bold text-lg mb-1" data-lang data-lang-zh="辦公室翻新工程" data-lang-en="Office Renovation Works">辦公室翻新工程</div>
+                                <div class="text-sm text-gray-500" data-lang data-lang-zh="提升辦公環境與效率" data-lang-en="Enhance office environment and efficiency">提升辦公環境與效率</div>
+                            </div>
+                            <div class="service-card bg-white shadow rounded-lg p-6 flex flex-col items-center text-center">
+                                <div class="text-4xl mb-3">🛒</div>
+                                <div class="font-bold text-lg mb-1" data-lang data-lang-zh="商場專櫃設計" data-lang-en="Mall Counter Design">商場專櫃設計</div>
+                                <div class="text-sm text-gray-500" data-lang data-lang-zh="吸睛專櫃設計方案" data-lang-en="Eye-catching counter design solutions">吸睛專櫃設計方案</div>
+                            </div>
+                            <div class="service-card bg-white shadow rounded-lg p-6 flex flex-col items-center text-center">
+                                <div class="text-4xl mb-3">📄</div>
+                                <div class="font-bold text-lg mb-1" data-lang data-lang-zh="各類牌照申請" data-lang-en="Various License Applications">各類牌照申請</div>
+                                <div class="text-sm text-gray-500" data-lang data-lang-zh="協助辦理各類工程牌照" data-lang-en="Assistance in handling various engineering licenses">協助辦理各類工程牌照</div>
+                            </div>
+                            <div class="service-card bg-white shadow rounded-lg p-6 flex flex-col items-center text-center">
+                                <div class="text-4xl mb-3">📝</div>
+                                <div class="font-bold text-lg mb-1" data-lang data-lang-zh="圖則繪製審批" data-lang-en="Drawing & Approval">圖則繪製審批</div>
+                                <div class="text-sm text-gray-500" data-lang data-lang-zh="專業圖則繪製與審批" data-lang-en="Professional drawing and approval services">專業圖則繪製與審批</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our Services Section -->
+            <section class="py-12 bg-gray-50 dark:bg-gray-800">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="h2 font-red-hat-display mb-4" data-lang data-lang-zh="我們的服務" data-lang-en="Our Services">我們的服務</h2>
+                        <p class="text-xl text-gray-600 dark:text-gray-400" data-lang data-lang-zh="全方位專業工程服務，滿足您的各種需求" data-lang-en="Comprehensive Professional Engineering Services to Meet Your Needs">全方位專業工程服務，滿足您的各種需求</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Service 1 -->
+                        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                            <div class="w-12 h-12 bg-teal-500 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2" data-lang data-lang-zh="室內設計" data-lang-en="Interior Design">室內設計</h3>
+                            <p class="text-gray-600 dark:text-gray-400" data-lang data-lang-zh="專業設計團隊為您打造獨特的空間風格" data-lang-en="Professional design team creates unique space styles">專業設計團隊為您打造獨特的空間風格</p>
+                        </div>
+
+                        <!-- Service 2 -->
+                        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                            <div class="w-12 h-12 bg-teal-500 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2" data-lang data-lang-zh="裝修工程" data-lang-en="Renovation">裝修工程</h3>
+                            <p class="text-gray-600 dark:text-gray-400" data-lang data-lang-zh="高品質施工團隊，確保工程品質" data-lang-en="High-quality construction team ensures project quality">高品質施工團隊，確保工程品質</p>
+                        </div>
+
+                        <!-- Service 3 -->
+                        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                            <div class="w-12 h-12 bg-teal-500 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2" data-lang data-lang-zh="品質保證" data-lang-en="Quality Assurance">品質保證</h3>
+                            <p class="text-gray-600 dark:text-gray-400" data-lang data-lang-zh="十年經驗，品質保證，售後服務" data-lang-en="10 years experience, quality assurance, after-sales service">十年經驗，品質保證，售後服務</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- Contact Section Enhancement -->
+            <section id="contact" class="py-12 bg-white">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="h2 font-red-hat-display mb-4 text-white" data-lang data-lang-zh="聯絡我們" data-lang-en="Contact Us">聯絡我們</h2>
+                        <p class="text-xl text-gray-400 mb-8" data-lang data-lang-zh="歡迎隨時與我們聯繫，我們將為您提供專業的諮詢服務" data-lang-en="Feel free to contact us anytime for professional consultation">歡迎隨時與我們聯繫，我們將為您提供專業的諮詢服務</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-white dark:bg-gray-800 p-8 rounded-lg">
+                            <h3 class="text-xl font-bold mb-4" data-lang data-lang-zh="聯絡資訊" data-lang-en="Contact Information">聯絡資訊</h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-teal-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                    <span data-lang data-lang-zh="地址：九龍灣宏冠道8號金漢工業大廈一樓103 A室" data-lang-en="Address: WORKSHOP NO.3 1/F, KAM HON INDUSTRIAL BUILDING WANG KWUN ROAD, KOWLOON BAY, KOWLOON">地址：九龍灣宏冠道8號金漢工業大廈一樓103 A室</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-teal-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                    </svg>
+                                    <span data-lang data-lang-zh="公司電話：3468 5420" data-lang-en="Phone: 3468 5420">公司電話：3468 5420</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-teal-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                    <span data-lang data-lang-zh="電郵：ko2013co@gmail.com" data-lang-en="Email: ko2013co@gmail.com">電郵：ko2013co@gmail.com</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-teal-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <span data-lang data-lang-zh="營業時間：09:30-18:00" data-lang-en="Business Hours: 09:30-18:00">營業時間：09:30-18:00</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-800 p-8 rounded-lg">
+                            <h3 class="text-xl font-bold mb-4" data-lang data-lang-zh="社交媒體" data-lang-en="Social Media">社交媒體</h3>
+                            <div class="flex space-x-4">
+                                <a href="https://www.facebook.com/people/%E9%AB%98%E6%AD%8C%E5%B7%A5%E7%A8%8B/61562298970991/" target="_blank" class="w-12 h-12 facebook-button rounded-full flex items-center justify-center text-white hover:bg-indigo-700 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                                <a href="https://wa.me/85251821185" target="_blank" class="w-12 h-12 whatsapp-button rounded-full flex items-center justify-center text-white hover:bg-indigo-700 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                </a>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </section>
+
+        </main>
+
+        <!-- Site footer -->
+        <footer class="relative">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="py-12 md:py-16 border-t border-gray-200 dark:border-gray-800 -mt-px">
+
+                    <!-- Footer illustration -->
+                    <div class="pointer-events-none -z-1" aria-hidden="true">
+                        <svg class="absolute bottom-0 left-0 transform -translate-x-1/2 ml-24 dark:opacity-40" width="800" height="264" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="400" cy="400" r="400" fill="url(#footerglow_paint0_radial)" fill-opacity=".4" />
+                            <defs>
+                                <radialGradient id="footerglow_paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(90 0 400) scale(315.089)">
+                                    <stop stop-color="#3ABAB4" />
+                                    <stop offset="1" stop-color="#3ABAB4" stop-opacity=".01" />
+                                </radialGradient>
+                            </defs>
+                        </svg>
+                    </div>
+
+                    <!-- Top area: Blocks -->
+                    <div class="grid md:grid-cols-12 gap-8 lg:gap-20 mb-8 md:mb-12">
+
+                        <!-- 1st block -->
+                        <div class="md:col-span-2 lg:col-span-3">
+                            <!-- Logo -->
+                            <a class="inline-block" href="index.html" aria-label="Cruip">
+                                <svg class="w-8 h-8" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient x1="26%" y1="100%" x2="100%" y2="100%" id="flogo_a">
+                                            <stop stop-color="#3ABAB4" offset="0%" />
+                                            <stop stop-color="#7F9CF5" offset="100%" />
+                                        </linearGradient>
+                                        <linearGradient x1="26%" y1="100%" x2="100%" y2="100%" id="flogo_b">
+                                            <stop stop-color="#3ABAB4" offset="0%" />
+                                            <stop stop-color="#3ABAB4" stop-opacity="0" offset="100%" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M32 16h-8a8 8 0 10-16 0H0C0 7.163 7.163 0 16 0s16 7.163 16 16z" fill="url(#flogo_a)" />
+                                    <path d="M32 16c0 8.837-7.163 16-16 16S0 24.837 0 16h8a8 8 0 1016 0h8z" fill="url(#flogo_b)" />
+                                </svg>
+                            </a>
+                        </div>
+
+
+
+                    </div>
+
+                     <!-- Footer navigation -->
+                     <div class="flex flex-wrap justify-between py-8 md:py-12">
+                        <!-- 快速連結 -->
+                        <div class="w-full md:w-auto px-4 mb-6 md:mb-0">
+                            <h6 class="text-sm font-medium uppercase mb-2 text-gray-600 dark:text-gray-400" data-lang="quick-links" data-lang-zh="快速連結" data-lang-en="Quick Links">快速連結</h6>
+                            <ul class="text-sm flex flex-wrap md:flex-nowrap">
+                                <li class="mr-6 mb-1">
+                                    <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" href="index.html" data-lang="home" data-lang-zh="首頁" data-lang-en="Home">首頁</a>
+                                </li>
+                                <li class="mr-6 mb-1">
+                                    <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" href="index.html#section1" data-lang="about-us" data-lang-zh="關於我們" data-lang-en="About Us">關於我們</a>
+                                </li>
+                                <li class="mr-6 mb-1">
+                                    <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" href="index.html#section2" data-lang="projects" data-lang-zh="工程案例" data-lang-en="Projects">工程案例</a>
+                                </li>
+                                <li class="mr-6 mb-1">
+                                    <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" href="index.html#section3" data-lang="services" data-lang-zh="服務項目" data-lang-en="Services">服務項目</a>
+                                </li>
+                                <li class="mr-6 mb-1">
+                                    <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" href="index.html#contact" data-lang="contact" data-lang-zh="聯絡我們" data-lang-en="Contact Us">聯絡我們</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- 服務範圍 -->
+                        <div class="w-full md:w-auto px-4 mb-6 md:mb-0">
+                            <h6 class="text-sm font-medium uppercase mb-2 text-gray-600 dark:text-gray-400" data-lang="service-areas" data-lang-zh="服務範圍" data-lang-en="Service Areas">服務範圍</h6>
+                            <ul class="text-sm flex flex-wrap md:flex-nowrap">
+                                <li class="mr-6 mb-1">
+                                    <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" href="gallery4.html" data-lang="furniture-projects" data-lang-zh="家具/床具工程" data-lang-en="Furniture & Bedding Projects">家具/床具工程</a>
+                                </li>
+                                <li class="mr-6 mb-1">
+                                    <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" href="gallery2.html" data-lang="residential-projects" data-lang-zh="住宅工程" data-lang-en="Residential Projects">住宅工程</a>
+                                </li>
+                                <li class="mr-6 mb-1">
+                                    <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" href="gallery5.html" data-lang="commercial-projects" data-lang-zh="商業/辦公空間" data-lang-en="Commercial & Office Spaces">商業/辦公空間</a>
+                                </li>
+                                <li class="mr-6 mb-1">
+                                    <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" href="gallery3.html" data-lang="dining-projects" data-lang-zh="餐飲/休閒場所" data-lang-en="Dining & Leisure Venues">餐飲/休閒場所</a>
+                                </li>
+                                <li class="mr-6 mb-1">
+                                    <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" href="gallery1.html" data-lang="special-projects" data-lang-zh="特殊用途設施" data-lang-en="Special Purpose Facilities">特殊用途設施</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- 聯絡我們 -->
+                        <div class="w-full md:w-auto px-4">
+                            <h6 class="text-sm font-medium uppercase mb-2 text-indigo-600 dark:text-indigo-400 ">聯絡我們</h6>
+                            <ul class="text-sm flex flex-wrap md:flex-nowrap text-gray-600 dark:text-gray-400">
+                                <li class="mr-6 mb-1" data-lang data-lang-zh="地址：九龍灣宏冠道8號金漢工業大廈一樓103 A室" data-lang-en="Address: WORKSHOP NO.3 1/F, KAM HON INDUSTRIAL BUILDING WANG KWUN ROAD, KOWLOON BAY, KOWLOON">地址：九龍灣宏冠道8號金漢工業大廈一樓103 A室</li>
+                                <li class="mr-6 mb-1" data-lang data-lang-zh="公司電話：3468 5420" data-lang-en="Phone: 3468 5420">公司電話：3468 5420</li>
+                                <li class="mr-6 mb-1" data-lang data-lang-zh="電郵：ko2013co@gmail.com" data-lang-en="Email: ko2013co@gmail.com">電郵：ko2013co@gmail.com</li>
+                                <li class="mr-6 mb-1" data-lang data-lang-zh="營業時間：09:30-18:00" data-lang-en="Business Hours: 09:30-18:00">營業時間：09:30-18:00</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Bottom area -->
+                    <div class="md:flex md:items-center md:justify-between border-t border-gray-200 dark:border-gray-800 py-4">
+                        <!-- Social links -->
+                        <ul class="flex mb-4 md:order-1 md:mb-0">
+                            <li>
+                                <a class="flex justify-center items-center text-white bg-teal-500 dark:text-teal-500 dark:bg-gray-800 hover:bg-teal-600 rounded-full transition duration-150 ease-in-out w-8 h-8" href="https://www.facebook.com/people/%E9%AB%98%E6%AD%8C%E5%B7%A5%E7%A8%8B/61562298970991/" target="_blank" aria-label="Facebook">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 32 32">
+                                        <path d="M14.023 24L14 17h-3v-3h3v-2c0-2.7 1.672-4 4.08-4 1.153 0 2.144.086 2.433.124v2.821h-1.67c-1.31 0-1.563.623-1.563 1.536V14H21l-1 3h-2.72v7h-3.257z" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="ml-4">
+                                <a class="flex justify-center items-center text-white bg-teal-500 dark:text-teal-500 dark:bg-gray-800 hover:bg-teal-600 rounded-full transition duration-150 ease-in-out w-8 h-8" href="https://wa.me/85251821185" target="_blank" aria-label="WhatsApp">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 32 32">
+                                        <path d="M16 8.2c-4.4 0-8 3.6-8 8 0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4V22c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.7 3.9.3.4.6.9.6 1.6v2.2c0 .2.1.5.6.4 3.2-1.1 5.5-4.1 5.5-7.6-.1-4.4-3.7-8-8.1-8z" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Copyright -->
+                        <div class="text-gray-600 dark:text-gray-400 text-sm">&copy; 2024 高歌工程. All rights reserved.</div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+     
+
+
+    </div>
+
+    <script src="./js/vendors/alpinejs.min.js" defer></script>
+    <script src="./js/vendors/aos.js"></script>
+    <script src="./js/vendors/swiper-bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+    
+    <div class="social-buttons">
+        <a href="https://wa.me/85251821185" target="_blank" class="social-button whatsapp-button" title="联系我们 WhatsApp">
+            <svg viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+        </a>
+        <a href="https://www.facebook.com/people/%E9%AB%98%E6%AD%8C%E5%B7%A5%E7%A8%8B/61562298970991/" target="_blank" class="social-button facebook-button" title="访问我们的 Facebook">
+            <svg viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+        </a>
+    </div>
+
+
+</body>
+
+</html>
+</html>
