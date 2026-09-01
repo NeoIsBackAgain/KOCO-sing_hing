@@ -2210,32 +2210,6 @@
             }];
         }
 
-        // 嘗試下一個圖片路徑
-        function tryNextImagePath(img, possiblePaths) {
-            const currentIndex = possiblePaths.findIndex(path => path === img.src);
-            const nextIndex = currentIndex + 1;
-            
-            if (nextIndex < possiblePaths.length) {
-                console.log('嘗試下一個路徑:', possiblePaths[nextIndex]);
-                img.src = possiblePaths[nextIndex];
-                img.onclick = () => openFullscreen(possiblePaths[nextIndex], img.alt);
-            } else {
-                console.log('所有路徑都嘗試過了，隱藏圖片');
-                img.style.display = 'none';
-                
-                // 顯示簡潔的無圖片提示
-                const wrapper = img.parentElement;
-                wrapper.innerHTML = `
-                    <div style="display: flex; align-items: center; justify-content: center; height: 300px; background: #f8f9fa; border-radius: 8px;">
-                        <div style="text-align: center; color: #666;">
-                            <div style="font-size: 48px; margin-bottom: 10px;">📷</div>
-                            <div>暫無圖片</div>
-                        </div>
-                    </div>
-                `;
-            }
-        }
-
         // 更新彈窗圖片內容
         function updateModalImages(originalTitle, foundImages) {
             const modalBody = document.querySelector('.modal-body');
@@ -2423,93 +2397,35 @@
             });
         }
 
-        // 獲取項目圖片 - 修復版本：正確檢查所有圖片
-        async function getProjectImages(projectTitle) {
-            const foundImages = [];
-            const maxImages = 25; // 增加檢查數量
-            
-            console.log('開始搜尋項目圖片:', projectTitle);
-            
-            // 創建所有可能的路徑
-            const allPaths = [];
-            for (let i = 1; i <= maxImages; i++) {
-                const paths = [
-                    `./images/${projectTitle}/${i.toString().padStart(2, '0')}.jpg`,
-                    `./images/${projectTitle}/${i}.jpg`,
-                    `./images/${projectTitle}/${i.toString().padStart(2, '0')}.png`,
-                    `./images/${projectTitle}/${i}.png`
-                ];
-                paths.forEach(path => {
-                    allPaths.push({ number: i, path: path, type: path.split('.').pop() });
-                });
+        // ---- 圖片清單快取（取代逐張猜測探測） ----
+        let imageManifest = null;
+
+        async function loadManifest() {
+            if (imageManifest) return imageManifest;
+            try {
+                const response = await fetch('./images-manifest.json');
+                imageManifest = await response.json();
+            } catch (error) {
+                console.error('無法載入圖片清單:', error);
+                imageManifest = {};
             }
-            
-            // 並行檢查所有路徑，但分批處理避免過載
-            const batchSize = 20;
-            const allChecks = allPaths.map(async (item) => {
-                try {
-                    const exists = await checkImageExists(item.path);
-                    if (exists) {
-                        console.log('找到圖片:', item.path);
-                        return item;
-                    }
-                } catch (error) {
-                    // 忽略錯誤
-                }
-                return null;
-            });
-            
-            // 等待所有檢查完成
-            const allResults = await Promise.all(allChecks);
-            
-            // 收集找到的圖片，去重（同一數字的不同格式）
-            const imageMap = new Map();
-            allResults.forEach(result => {
-                if (result) {
-                    const key = result.number;
-                    if (!imageMap.has(key)) {
-                        imageMap.set(key, result);
-                        foundImages.push(result);
-                    }
-                }
-            });
-            
-            console.log('圖片搜尋完成，總計:', foundImages.length, '張');
-            return foundImages.sort((a, b) => a.number - b.number);
+            return imageManifest;
         }
 
-        // 檢查圖片是否存在 - 平衡版本：適中的超時時間
-        function checkImageExists(src) {
-            return new Promise((resolve) => {
-                const img = new Image();
-                let resolved = false;
-                
-                // 設置適中的超時時間，平衡速度和可靠性
-                const timeout = setTimeout(() => {
-                    if (!resolved) {
-                        resolved = true;
-                        resolve(false);
-                    }
-                }, 300); // 調整為300毫秒超時，提高可靠性
-                
-                img.onload = () => {
-                    if (!resolved) {
-                        resolved = true;
-                        clearTimeout(timeout);
-                        resolve(true);
-                    }
-                };
-                
-                img.onerror = () => {
-                    if (!resolved) {
-                        resolved = true;
-                        clearTimeout(timeout);
-                        resolve(false);
-                    }
-                };
-                
-                img.src = src;
-            });
+        // 獲取項目圖片 - 直接讀取 images-manifest.json，不再逐張探測
+        async function getProjectImages(projectTitle) {
+            const manifest = await loadManifest();
+            const files = manifest[projectTitle] || [];
+
+            if (files.length === 0) {
+                console.warn('清單中找不到此項目的圖片:', projectTitle);
+            }
+
+            return files.map((filename, index) => ({
+                number: index + 1,
+                path: `./images/${projectTitle}/${filename}`,
+                type: filename.split('.').pop()
+            }));
         }
 
         // 全屏查看功能
@@ -2842,6 +2758,9 @@
 
         // 初始化
         function initializeApp() {
+            // 預先載入圖片清單，加快首次點擊速度
+            loadManifest();
+
             // 保存原始標題和分類文字
             document.querySelectorAll('.project-card .project-name-label').forEach(label => {
                 if (!label.getAttribute('data-original-title')) {

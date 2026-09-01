@@ -450,6 +450,52 @@ async function updateHtmlPage(info, path, snippet){
   }
 }
 
+// ---- NEW: keep images-manifest.json in sync with each upload ----
+async function updateManifest(info, folder, uploadedFilenames){
+  const path = 'images-manifest.json';
+  const url = `https://api.github.com/repos/${info.owner}/${info.repo}/contents/${path}?ref=${encodeURIComponent(info.branch)}`;
+
+  let manifest = {};
+  let sha = null;
+
+  // Try to read the existing manifest first
+  const getRes = await fetch(url, { headers: apiHeaders() });
+  if (getRes.ok) {
+    const fileData = await getRes.json();
+    sha = fileData.sha;
+    try {
+      manifest = JSON.parse(base64ToUtf8(fileData.content));
+    } catch (e) {
+      log('Warning: existing manifest was invalid JSON, starting fresh.');
+      manifest = {};
+    }
+  } else if (getRes.status !== 404) {
+    throw new Error(`Failed to read manifest: ${getRes.status}`);
+  }
+
+  // Merge: add this batch's filenames into the folder's list, dedupe + sort
+  const existing = new Set(manifest[folder] || []);
+  uploadedFilenames.forEach(name => existing.add(name));
+  manifest[folder] = Array.from(existing).sort();
+
+  const putBody = {
+    message: `Update images-manifest.json for ${folder}`,
+    content: utf8ToBase64(JSON.stringify(manifest, null, 2)),
+    branch: info.branch,
+  };
+  if (sha) putBody.sha = sha;
+
+  const putRes = await fetch(url, {
+    method: 'PUT',
+    headers: { ...apiHeaders(), 'Content-Type': 'application/json' },
+    body: JSON.stringify(putBody),
+  });
+  if (!putRes.ok) {
+    const errData = await putRes.json().catch(() => ({}));
+    throw new Error(errData.message || `${putRes.status} ${putRes.statusText}`);
+  }
+}
+
 uploadBtn.addEventListener('click', async () => {
   const info = repoInfo();
   if (!info) return;
@@ -469,6 +515,21 @@ uploadBtn.addEventListener('click', async () => {
   }
 
   const anySucceeded = selectedFiles.some(f => f.status === 'done');
+
+  // NEW: keep images-manifest.json in sync so allphoto.html doesn't have to guess file paths
+  if (anySucceeded) {
+    try {
+      const uploadedNames = selectedFiles
+        .filter(f => f.status === 'done')
+        .map(f => sanitizeSegment(f.name).replace(/\s+/g, '_'));
+      log('Updating images-manifest.json ...');
+      await updateManifest(info, folder, uploadedNames);
+      log('images-manifest.json updated ✓');
+    } catch (err) {
+      log('Error updating manifest: ' + err.message);
+    }
+  }
+
   if (catKey && anySucceeded) {
     try {
       const coverEntry = selectedFiles.find(f => f.status === 'done');
