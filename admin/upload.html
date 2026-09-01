@@ -78,20 +78,15 @@
   <p class="sub">Uploads images directly into this repo via the GitHub API. Nothing is stored anywhere except in this browser tab.</p>
 
   <div class="card">
-    <h2>GitHub 連線設定 &nbsp;<span class="badge warn">Required</span></h2>
-    <div class="field">
-      <label for="token">Personal Access Token（只需 repo 寫入權限，不會被儲存）</label>
-      <input type="password" id="token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
-      <div class="hint">Create one at github.com → Settings → Developer settings → Fine-grained tokens, with write access to Contents on this repo only.</div>
-    </div>
+    <h2>GitHub 連線設定</h2>
     <div class="row">
       <div class="field">
         <label for="owner">GitHub 用戶名 / Owner</label>
-        <input type="text" id="owner" placeholder="e.g. yourname">
+        <input type="text" id="owner" value="NeoIsBackAgain">
       </div>
       <div class="field">
         <label for="repo">Repository</label>
-        <input type="text" id="repo" placeholder="e.g. sing_hing">
+        <input type="text" id="repo" value="KOCO-sing_hing">
       </div>
     </div>
     <div class="field">
@@ -163,8 +158,13 @@
 </div>
 
 <script>
+// NOTE: this token is embedded client-side at the user's explicit request.
+// Anyone who can view this page's source can read it and gain write access
+// to the repo below. Rotate/revoke it at github.com/settings/tokens any time.
+const GITHUB_TOKEN = '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';
+
 const $ = id => document.getElementById(id);
-const tokenEl = $('token'), ownerEl = $('owner'), repoEl = $('repo'), branchEl = $('branch');
+const ownerEl = $('owner'), repoEl = $('repo'), branchEl = $('branch');
 const folderSelect = $('folderSelect'), newFolder = $('newFolder');
 const fileInput = $('fileInput'), dropZone = $('dropZone'), fileList = $('fileList');
 const uploadBtn = $('uploadBtn'), logEl = $('log'), loadFoldersBtn = $('loadFoldersBtn');
@@ -178,10 +178,7 @@ function log(msg){
 }
 
 function apiHeaders(){
-  const token = tokenEl.value.trim();
-  const h = { 'Accept': 'application/vnd.github+json' };
-  if (token) h['Authorization'] = 'Bearer ' + token;
-  return h;
+  return { 'Accept': 'application/vnd.github+json', 'Authorization': 'Bearer ' + GITHUB_TOKEN };
 }
 
 function repoInfo(){
@@ -429,7 +426,6 @@ async function updateHtmlPage(info, path, snippet){
 uploadBtn.addEventListener('click', async () => {
   const info = repoInfo();
   if (!info) return;
-  if (!tokenEl.value.trim()) { alert('Please enter a GitHub token with write access.'); return; }
   const folder = currentFolder();
   if (!folder) { alert('Please choose an existing folder or type a new folder name.'); return; }
   if (selectedFiles.length === 0) { alert('Please select at least one image.'); return; }
